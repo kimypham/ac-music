@@ -1,11 +1,22 @@
-import './App.css'
+import { Navbar } from './components/Navbar';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { About, Main } from './pages';
+import { Footer } from './components';
 
 function App() {
     return (
         <div className='flex flex-col h-svh font-main text-lm-white dark:text-dm-text-light-blue bg-lm-bg-blue dark:bg-dm-bg-dark-blue'>
-            <div>Navbar</div>
-            <div>Content</div>
-            <div>Footer</div>
+            <BrowserRouter>
+                <Navbar />
+                <Routes>
+                    <Route>
+                        <Route path={"about"} element={<About />} />
+                        <Route path={"/"} element={<Main />} />
+                        <Route path={"*"} element={<Main />} />
+                    </Route>
+                </Routes>
+                <Footer />
+            </BrowserRouter>
         </div>
     )
 }
