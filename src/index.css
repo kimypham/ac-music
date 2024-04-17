@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    width: 100vw;
+    overflow: hidden;
+}
+
+.shadow {
+    box-shadow: 0 8px 4px 0 rgba(24, 122, 190, 0.25);
+}
+
+.link {
+    text-decoration: underline;
+}
+
+.link:hover {
+    color: #d3efff;
+}
+
+input {
+    width: 16px;
+    height: 16px;
+}
+
+input[type="radio"]:not(:checked):not(:disabled) {
+    border-radius: 100px;
+}
+
+input:not(:checked):not(:disabled) {
+    appearance: none;
+    background: none;
+    border: solid 1px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .link:hover {
+        color: #3AB8FF;
+    }
+}
