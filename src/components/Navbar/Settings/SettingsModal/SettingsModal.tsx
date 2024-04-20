@@ -1,5 +1,5 @@
 export const SettingsModal = ({ isOpen }: { isOpen: boolean }) => (
-    <div className={`${isOpen ? 'transition ease-in-out duration-[900ms] -translate-x-[0px]' : 'transition ease-out duration-[900ms] translate-x-[391px]'} absolute right-0 p-[32px] w-[391px] h-auto mt-[24px] rounded-l-[45px] rounded-br-[45px] bg-lm-white dark:bg-dm-black text-lm-text-dark-blue dark:text-dm-text-light-blue shadow`} >
+    <div className={`${isOpen ? 'transition ease-in-out duration-[900ms] -translate-x-[0px]' : 'transition ease-out duration-[900ms] translate-x-[391px]'} fixed right-0 p-[32px] w-[391px] h-auto mt-[24px] rounded-l-[45px] rounded-br-[45px] bg-lm-white dark:bg-dm-black text-lm-text-dark-blue dark:text-dm-text-light-blue shadow`} >
         <div className="flex justify-center mb-[16px] text-[24px]">
             <p>Settings</p>
         </div>
