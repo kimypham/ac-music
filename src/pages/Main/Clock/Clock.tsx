@@ -14,6 +14,6 @@ export const Clock = () => {
     const timeString: string = time.toLocaleTimeString(['en-AU'], { timeStyle: 'short' })
 
     return (
-        <h1 className="text-[128px]">{timeString}</h1>
+        <h1 className="text-[128px] leading-[1.1]">{timeString}</h1>
     );
 };
