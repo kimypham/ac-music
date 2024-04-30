@@ -14,7 +14,7 @@ export const Settings = () => {
 
     return (
         <div>
-            <div className={`${runOpenAnimation && "animate-spin-right" || runCloseAnimation && "animate-spin-left"} hover:text-lm-hover dark:hover:text-lm-text-blue`}
+            <div className={`${runOpenAnimation && "animate-spin-right" || runCloseAnimation && "animate-spin-left"} hover:text-lm-hover dark:hover:text-lm-text-blue hover:cursor-pointer`}
                 onClick={onSettingsClick}>
                 <IoMdSettings size="45px" />
             </div>
