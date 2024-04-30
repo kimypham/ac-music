@@ -14,12 +14,51 @@ export default {
                 'spin-left': {
                     '0%': { transform: 'rotate(0deg)' },
                     '100%': { transform: 'rotate(-180deg)' },
-                }
+                },
+                'sway-left': {
+                    '0%': { transform: 'translateX(0%)' },
+                    '50%': { transform: 'translateX(-210%)' },
+                    '100%': { transform: 'translateX(0%)' }
+                },
+                'sway-right': {
+                    '0%': { transform: 'translateX(0%)' },
+                    '50%': { transform: 'translateX(210%)' },
+                    '100%': { transform: 'translateX(0%)' }
+                },
+                'travel-right': {
+                    '0%': { transform: 'translateX(0%)', left: -150 },
+                    '100%': { transform: 'translateX(120%)' }
+                },
+                'cloud-1': {
+                    '0%': { transform: 'translateX(0%)' },
+                    '50%': { transform: 'translateX(180%)' },
+                    '100%': { transform: 'translateX(0%)' }
+                },
+                'cloud-1': {
+                    '0%': { transform: 'translateX(0%)' },
+                    '50%': { transform: 'translateX(180%)' },
+                    '100%': { transform: 'translateX(0%)' }
+                },
             },
             animation: {
                 'spin-right': 'spin-right 600ms ease-in-out',
-                'spin-left': 'spin-left 600ms ease-in-out'
+                'spin-left': 'spin-left 600ms ease-in-out',
+                'sway-left': 'sway-left 1s infinite',
+                'sway-right': 'sway-right 1s infinite',
+                'cloud-1': 'cloud-1 60s infinite',
+                'cloud-2': 'cloud-2 1s infinite'
             }
+
+            // @keyframes bounce {
+            //     0 %, 100 % {
+            //         transform: translateY(-25 %);
+            //         animation- timing - function: cubic- bezier(0.8, 0, 1, 1);
+            // }
+            // 50 % {
+            //     transform: translateY(0);
+            //     animation- timing - function: cubic- bezier(0, 0, 0.2, 1);
+            //   }
+            // }
         },
 
         fontFamily: {
