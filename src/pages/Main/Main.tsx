@@ -3,7 +3,7 @@ import { Clock } from "./Clock";
 export const Main = () => {
     return (
         <div className="flex px-[96px] font-bold text-[32px] self-center my-auto">
-            <div className='bg-[#85BFF5] dark:bg-[#093157] h-4/6 w-full fixed top-0 left-0 z-0 rounded-b-[200px]' />
+            {/* <div className='bg-[#85BFF5] dark:bg-[#093157] h-4/6 w-full fixed top-0 left-0 z-0 rounded-b-[200px]' /> */}
 
             <div className="z-10 flex-col text-center">
                 <Clock />

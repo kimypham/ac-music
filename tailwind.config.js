@@ -27,6 +27,19 @@ export default {
         },
 
         colors: {
+
+            // for light mode
+            'lm-white': '#FFF9F5',
+            'lm-bg-green': '#529D7D',
+
+            // for dark mode
+            'dm-white': '#B2D8D6',
+            'dm-bg-dark-green': '#081D22',
+
+
+
+
+            // OLD COLOURS
             'shadow': '187ABE',
 
             // for light mode
