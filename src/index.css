@@ -16,7 +16,7 @@ body {
     background:
         linear-gradient(to right, #64c8c8, #64c8c8),
         linear-gradient(to right, #d5ffe2, #93ffcd, #03c9d4);
-    background-size: 100% 1px, 0 1px;
+    background-size: 100% 2px, 0 2px;
     background-position: 100% 100%, 0 100%;
     background-repeat: no-repeat;
     transition: background-size 400ms;
