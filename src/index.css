@@ -11,12 +11,20 @@ body {
     box-shadow: 0 8px 4px 0 rgba(24, 122, 190, 0.25);
 }
 
+/* Link hover animation based off code by Harshil Patel from https://css-tricks.com/css-link-hover-effects/ */
 .link {
-    text-decoration: underline;
+    background:
+        linear-gradient(to right, #64c8c8, #64c8c8),
+        linear-gradient(to right, #d5ffe2, #93ffcd, #03c9d4);
+    background-size: 100% 1px, 0 1px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
 }
 
 .link:hover {
-    color: #d3efff;
+    color: #8dffba;
+    background-size: 0 2px, 100% 2px;
 }
 
 input {
@@ -34,8 +42,8 @@ input:not(:checked):not(:disabled) {
     border: solid 1px;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
     .link:hover {
         color: #3AB8FF;
     }
-}
+} */
