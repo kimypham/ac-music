@@ -1,11 +1,23 @@
-import { Clock } from "./Clock";
+import { PropsWithChildren } from "react";
 
 export const Main = () => {
+    const HighlightText = ({ children }: PropsWithChildren) => {
+        return <div className="text-lm-text-blue dark:text-dm-text-green inline">
+            {children}
+        </div>
+    }
+
     return (
-        <div className="flex px-[96px] font-bold text-[32px] self-center my-auto">
+        <div className="flex px-[96px] font-bold font-open-sans text-[32px] text-lm-text-brown text-center dark:text-dm-white self-center my-auto w-full h-full">
+            <div className="flex bg-lm-white dark:bg-dm-bg-green w-full h-full rounded-[30px] justify-center items-center">
+                <p className="font-extrabold leading-loose">
+                    It's currently <HighlightText>2:12pm</HighlightText> and <HighlightText>cloudy</HighlightText>!<br />
+                    Now playing: <HighlightText>2PM AC: NH Soundtrack</HighlightText>
+                </p>
+            </div>
             {/* <div className='bg-[#85BFF5] dark:bg-[#093157] h-4/6 w-full fixed top-0 left-0 z-0 rounded-b-[200px]' /> */}
 
-            <div className="z-10 flex-col text-center">
+            {/* <div className="z-10 flex-col text-center">
                 <Clock />
 
                 <div className="flex text-[36px] justify-center">
@@ -18,7 +30,7 @@ export const Main = () => {
                     <h2 className='text-lm-text-blue dark:text-lm-text-dark-blue'>2PM - AC: NH Soundtrack</h2>
                     <h2 className='dark:text-lm-text-dark-blue text-[26px]'>*Audio controls go here*</h2>
                 </div>
-            </div>
+            </div> */}
 
         </div>
     );
