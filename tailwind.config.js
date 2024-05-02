@@ -23,7 +23,8 @@ export default {
         },
 
         fontFamily: {
-            'main': ['Nunito', 'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif']
+            'main': ['Nunito', 'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
+            'open-sans': ['Open Sans', 'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif']
         },
 
         colors: {
@@ -31,10 +32,16 @@ export default {
             // for light mode
             'lm-white': '#FFF9F5',
             'lm-bg-green': '#529D7D',
+            'lm-text-brown': '#7A6649',
+            'lm-text-blue': '#00A5EB',
 
             // for dark mode
             'dm-white': '#B2D8D6',
             'dm-bg-dark-green': '#081D22',
+            'dm-bg-green': '#0E2931',
+            'dm-text-green': '#48C5AF',
+
+
 
 
 
