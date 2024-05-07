@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --dm-text-green: #48C5AF;
+    --dm-bg-dark-green: #081D22;
+    --dm-bg-green: #0E2931;
+    --lm-brown: #7A6649;
+    --lm-hover-white: #e6ded8;
+    --lm-light-brown: #f9f6f2;
+    --lm-white: #FFF9F5;
+}
+
 body {
     width: 100vw;
     overflow: hidden;
@@ -25,9 +35,14 @@ body {
 .link:hover {
     color: #8dffba;
     background-size: 0 2px, 100% 2px;
+    cursor: pointer;
 }
 
-input {
+input:hover {
+    cursor: pointer;
+}
+
+input[type="radio"] {
     width: 16px;
     height: 16px;
 }
@@ -36,14 +51,8 @@ input[type="radio"]:not(:checked):not(:disabled) {
     border-radius: 100px;
 }
 
-input:not(:checked):not(:disabled) {
+input[type="radio"]:not(:checked):not(:disabled) {
     appearance: none;
     background: none;
     border: solid 1px;
 }
-
-/* @media (prefers-color-scheme: dark) {
-    .link:hover {
-        color: #3AB8FF;
-    }
-} */
