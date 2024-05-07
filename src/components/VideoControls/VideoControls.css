@@ -1,0 +1,93 @@
+/* custom range slider based off code by Ibadehin Mojeed from https://blog.logrocket.com/creating-custom-css-range-slider-javascript-upgrades/ */
+
+input[type="range"] {
+    border: 1px solid var(--lm-brown);
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 13px;
+    background: var(--lm-light-brown);
+    border-radius: 16px;
+}
+
+input[type="range"]::-moz-range-track {
+    height: 13px;
+    background: var(--lm-light-brown);
+    border-radius: 16px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track:hover {
+    transition: 300ms;
+    background: #e6ded8;
+}
+
+input[type="range"]::-moz-range-track:hover {
+    transition: 300ms;
+    background: #e6ded8;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 13px;
+    width: 13px;
+    background-color: var(--lm-white);
+    border-radius: 50%;
+    border: 2px solid var(--lm-brown);
+    box-shadow: -407px 0 0 400px var(--lm-brown);
+}
+
+input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 13px;
+    width: 13px;
+    background-color: var(--lm-white);
+    border-radius: 50%;
+    border: 1px solid var(--lm-brown);
+    box-shadow: -407px 0 0 400px var(--lm-brown);
+}
+
+@media (prefers-color-scheme: dark) {
+    input[type="range"] {
+        border: 0.5px solid var(--dm-text-green);
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+        background: var(--dm-bg-dark-green);
+    }
+
+    input[type="range"]::-moz-range-track {
+        background: var(--dm-bg-dark-green);
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        background-color: var(--dm-bg-dark-green);
+        border: 2px solid var(--dm-text-green);
+        box-shadow: -407px 0 0 400px var(--dm-text-green);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+        background-color: var(--dm-bg-dark-green);
+        border: 1px solid var(--dm-text-green);
+        box-shadow: -407px 0 0 400px var(--dm-text-green);
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track:hover {
+        background: var(--dm-bg-green);
+    }
+
+    input[type="range"]::-moz-range-track:hover {
+        background: var(--dm-bg-green);
+    }
+}

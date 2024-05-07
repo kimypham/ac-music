@@ -28,18 +28,18 @@ export default {
         },
 
         colors: {
-
             // for light mode
-            'lm-white': '#FFF9F5',
+            'lm-white': 'var(--lm-white)',
             'lm-bg-green': '#529D7D',
-            'lm-text-brown': '#7A6649',
+            'lm-brown': 'var(--lm-brown)',
             'lm-text-blue': '#00A5EB',
+            'lm-hover-white': 'var(--lm-hover-white)',
 
             // for dark mode
             'dm-white': '#B2D8D6',
-            'dm-bg-dark-green': '#081D22',
-            'dm-bg-green': '#0E2931',
-            'dm-text-green': '#48C5AF',
+            'dm-bg-dark-green': 'var(--dm-bg-dark-green)',
+            'dm-bg-green': 'var(--dm-bg-green)',
+            'dm-text-green': 'var(--dm-text-green)',
 
 
 

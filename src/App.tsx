@@ -5,7 +5,7 @@ import { Footer } from './components';
 
 function App() {
     return (
-        <div className='flex flex-col h-svh font-main text-lm-white dark:text-dm-white bg-lm-bg-green dark:bg-dm-bg-dark-green'>
+        <div className='flex flex-col h-svh font-main text-[#FFF9F5] dark:text-dm-white bg-lm-bg-green dark:bg-dm-bg-dark-green'>
             <BrowserRouter>
                 <Navbar />
                 <Routes>
