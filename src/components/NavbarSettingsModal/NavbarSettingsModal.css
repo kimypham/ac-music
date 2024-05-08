@@ -1,0 +1,18 @@
+input[type="radio"] {
+    width: 16px;
+    height: 16px;
+}
+
+input[type="radio"]:not(:checked):not(:disabled) {
+    border-radius: 100px;
+}
+
+input[type="radio"]:not(:checked):not(:disabled) {
+    appearance: none;
+    background: none;
+    border: solid 1px;
+}
+
+.shadow {
+    box-shadow: 0 8px 4px 0 rgba(24, 122, 190, 0.25);
+}

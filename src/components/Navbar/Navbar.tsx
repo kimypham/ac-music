@@ -3,6 +3,6 @@ export const Navbar = () => (
         <h1 className="w-full"><a href="/">AC Hourly Music</a></h1>
         <a href="/about" className="link text-[20px]">About</a>
         {/* TODO: Maybe only show settings on mobile view
-            <Settings /> */}
+            <NavbarSettings /> */}
     </nav>
 );
