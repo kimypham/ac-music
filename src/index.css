@@ -17,10 +17,6 @@ body {
     overflow: hidden;
 }
 
-.shadow {
-    box-shadow: 0 8px 4px 0 rgba(24, 122, 190, 0.25);
-}
-
 /* Link hover animation based off code by Harshil Patel from https://css-tricks.com/css-link-hover-effects/ */
 .link {
     background:
@@ -40,19 +36,4 @@ body {
 
 input:hover {
     cursor: pointer;
-}
-
-input[type="radio"] {
-    width: 16px;
-    height: 16px;
-}
-
-input[type="radio"]:not(:checked):not(:disabled) {
-    border-radius: 100px;
-}
-
-input[type="radio"]:not(:checked):not(:disabled) {
-    appearance: none;
-    background: none;
-    border: solid 1px;
 }

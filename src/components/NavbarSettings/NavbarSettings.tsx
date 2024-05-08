@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { IoMdSettings } from 'react-icons/io';
-import { SettingsModal } from './SettingsModal';
+import { NavbarSettingsModal } from '../NavbarSettingsModal';
 
-export const Settings = () => {
+export const NavbarSettings = () => {
     const [runOpenAnimation, setRunOpenAnimation] = useState(false);
     const [runCloseAnimation, setRunCloseAnimation] = useState(false);
 
@@ -19,7 +19,7 @@ export const Settings = () => {
                 <IoMdSettings size="45px" />
             </div>
 
-            <SettingsModal isOpen={runOpenAnimation} />
+            <NavbarSettingsModal isOpen={runOpenAnimation} />
         </div>
     );
 };
