@@ -1,0 +1,112 @@
+/* Styled radio button based off code by A Haworth from https://stackoverflow.com/questions/73572206/how-to-style-an-html-radio-input-element-such-that-the-radio-button-is-absent */
+/* Styled checkbox toggle based off code from https://www.w3schools.com/howto/howto_css_switch.asp */
+
+input[type="radio"],
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="radio"]:checked+label,
+input[type="checkbox"]:checked+.toggleCircle {
+    background-color: var(--lm-brown);
+    color: var(--lm-white);
+}
+
+input[type="radio"]:checked+label:hover,
+input[type="checkbox"]:checked+.toggleCircle:hover {
+    background-color: #62523a;
+}
+
+.radio {
+    background-color: var(--lm-hover-white);
+    width: 85px;
+    height: 40px;
+    border-radius: 30px;
+    align-content: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radio:hover,
+.toggleCircle:hover {
+    background-color: #d2c7bf;
+    transition: 300ms;
+}
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.toggleCircle {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transition: 300ms;
+    transition: 300ms;
+    background-color: #e1d6ce;
+    border-radius: 34px;
+}
+
+.toggleCircle:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--lm-white);
+    -webkit-transition: 300ms;
+    transition: 300ms;
+    border-radius: 50%;
+}
+
+input[type="checkbox"]:checked+.toggleCircle:before {
+    -webkit-transform: translateX(30px);
+    -ms-transform: translateX(30px);
+    transform: translateX(30px);
+}
+
+@media (prefers-color-scheme: dark) {
+
+    input[type="radio"]:checked+label,
+    input[type="checkbox"]:checked+.toggleCircle {
+        background-color: var(--dm-text-green);
+        color: var(--dm-bg-dark-green);
+    }
+
+    input[type="radio"]:checked+label:hover,
+    input[type="checkbox"]:checked+.toggleCircle:hover {
+        background-color: #66dbc6;
+    }
+
+    .radio {
+        background-color: #00494d;
+    }
+
+    .radio:hover,
+    .toggleCircle:hover {
+        background-color: var(--dm-button-hover);
+    }
+
+    .toggleCircle {
+        background-color: #00494d;
+    }
+
+    .toggleCircle:before {
+        background-color: var(--dm-white);
+    }
+
+    input[type="checkbox"]:checked+.toggleCircle:before {
+        background-color: #c2ebe9;
+    }
+
+}

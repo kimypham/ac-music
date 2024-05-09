@@ -26,16 +26,6 @@ input[type="range"]::-moz-range-track {
     border-radius: 16px;
 }
 
-input[type="range"]::-webkit-slider-runnable-track:hover {
-    transition: 300ms;
-    background: #e6ded8;
-}
-
-input[type="range"]::-moz-range-track:hover {
-    transition: 300ms;
-    background: #e6ded8;
-}
-
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -47,9 +37,12 @@ input[type="range"]::-webkit-slider-thumb {
     box-shadow: -407px 0 0 400px var(--lm-brown);
 }
 
+input[type="range"]:hover::-webkit-slider-thumb {
+    transition: 300ms;
+    box-shadow: -407px 0 0 400px #62523a;
+}
+
 input[type="range"]::-moz-range-thumb {
-    -webkit-appearance: none;
-    appearance: none;
     height: 13px;
     width: 13px;
     background-color: var(--lm-white);
@@ -58,29 +51,22 @@ input[type="range"]::-moz-range-thumb {
     box-shadow: -407px 0 0 400px var(--lm-brown);
 }
 
+input[type="range"]:hover::-moz-range-thumb {
+    transition: 300ms;
+    box-shadow: -407px 0 0 400px #62523a;
+}
+
 @media (prefers-color-scheme: dark) {
     input[type="range"] {
         border: 0.5px solid var(--dm-text-green);
     }
 
     input[type="range"]::-webkit-slider-runnable-track {
-        background: var(--dm-bg-dark-green);
+        background: var(--dm-bg-green);
     }
 
     input[type="range"]::-moz-range-track {
         background: var(--dm-bg-dark-green);
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-        background-color: var(--dm-bg-dark-green);
-        border: 2px solid var(--dm-text-green);
-        box-shadow: -407px 0 0 400px var(--dm-text-green);
-    }
-
-    input[type="range"]::-moz-range-thumb {
-        background-color: var(--dm-bg-dark-green);
-        border: 1px solid var(--dm-text-green);
-        box-shadow: -407px 0 0 400px var(--dm-text-green);
     }
 
     input[type="range"]::-webkit-slider-runnable-track:hover {
@@ -89,5 +75,21 @@ input[type="range"]::-moz-range-thumb {
 
     input[type="range"]::-moz-range-track:hover {
         background: var(--dm-bg-green);
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        background-color: var(--dm-bg-green);
+        border: 2px solid var(--dm-text-green);
+        box-shadow: -407px 0 0 400px var(--dm-text-green);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+        background-color: var(--dm-bg-green);
+        border: 1px solid var(--dm-text-green);
+        box-shadow: -407px 0 0 400px var(--dm-text-green);
+    }
+
+    input[type="range"]:hover::-webkit-slider-thumb {
+        box-shadow: -407px 0 0 400px #66dbc6;
     }
 }
