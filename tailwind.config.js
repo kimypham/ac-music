@@ -32,14 +32,15 @@ export default {
             'lm-white': 'var(--lm-white)',
             'lm-bg-green': '#529D7D',
             'lm-brown': 'var(--lm-brown)',
-            'lm-text-blue': '#00A5EB',
+            'lm-text-blue': '#48C0D3',
             'lm-hover-white': 'var(--lm-hover-white)',
 
             // for dark mode
-            'dm-white': '#B2D8D6',
+            'dm-white': 'var(--dm-white)',
             'dm-bg-dark-green': 'var(--dm-bg-dark-green)',
             'dm-bg-green': 'var(--dm-bg-green)',
             'dm-text-green': 'var(--dm-text-green)',
+            'dm-button-hover': 'var(--dm-button-hover)',
 
 
 
@@ -47,22 +48,22 @@ export default {
 
 
             // OLD COLOURS
-            'shadow': '187ABE',
+            // 'shadow': '187ABE',
 
             // for light mode
-            'lm-bg-light-blue': '#D5EDFF',
-            'lm-bg-blue': '#85BFF5',
-            'lm-white': '#FFFFFF',
-            'lm-text-dark-blue': '#187ABE',
-            'lm-text-blue': '#3AB8FF',
-            'lm-hover': '#d3efff',
+            // 'lm-bg-light-blue': '#D5EDFF',
+            // 'lm-bg-blue': '#85BFF5',
+            // 'lm-white': '#FFFFFF',
+            // 'lm-text-dark-blue': '#187ABE',
+            // // 'lm-text-blue': '#3AB8FF',
+            // 'lm-hover': '#d3efff',
 
-            // for dark mode
-            'dm-bg-dark-blue': '#020F23',
-            'dm-bg-blue': '#093157',
-            'dm-black': '#070E18',
-            'dm-text-light-blue': '#92CAF0',
-            'dm-text-blue': '#187ABE'
+            // // for dark mode
+            // 'dm-bg-dark-blue': '#020F23',
+            // 'dm-bg-blue': '#093157',
+            // 'dm-black': '#070E18',
+            // 'dm-text-light-blue': '#92CAF0',
+            // 'dm-text-blue': '#187ABE'
         }
     },
     plugins: [],

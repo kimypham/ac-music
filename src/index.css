@@ -6,10 +6,12 @@
     --dm-text-green: #48C5AF;
     --dm-bg-dark-green: #081D22;
     --dm-bg-green: #0E2931;
+    --dm-white: #B2D8D6;
     --lm-brown: #7A6649;
     --lm-hover-white: #e6ded8;
     --lm-light-brown: #f9f6f2;
     --lm-white: #FFF9F5;
+    --dm-button-hover: #00696e;
 }
 
 body {
