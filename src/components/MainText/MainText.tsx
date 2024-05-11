@@ -1,11 +1,12 @@
 import { PropsWithChildren } from 'react';
-import { useTime } from '../../hooks';
-import { getHourString } from './MainText.service';
 import { FormattedHour } from '../../common';
 
-export const MainText = () => {
-    const time: Date = useTime();
-    const hourString: FormattedHour = getHourString(time);
+interface IMainTextProps {
+    time: Date,
+    hour: FormattedHour
+}
+
+export const MainText = ({ time, hour }: IMainTextProps) => {
     const timeString: string = time.toLocaleTimeString(['en-AU'], { timeStyle: 'short' }).split(' ').join('');
 
     const HighlightText = ({ children }: PropsWithChildren) => {
@@ -17,7 +18,7 @@ export const MainText = () => {
     return (
         <p className="font-extrabold leading-loose">
             It's currently <HighlightText>{timeString}</HighlightText> and <HighlightText>cloudy</HighlightText>!<br />
-            Now playing: <HighlightText>{hourString} AC: NH Soundtrack</HighlightText>
+            Now playing: <HighlightText>{hour} AC: NH Soundtrack</HighlightText>
         </p>
     )
 }

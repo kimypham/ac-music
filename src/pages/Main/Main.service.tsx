@@ -1,6 +1,6 @@
 import { FormattedHour } from '../../common';
 
-export const getHourString = (time: Date): FormattedHour => {
+export const getHour = (time: Date): FormattedHour => {
     const currentHour: number = time.getHours();
 
     const isAm: boolean = currentHour <= 12;
