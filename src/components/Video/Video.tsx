@@ -1,10 +1,10 @@
 import { FormattedHour, NHVideoId } from '../../common';
+import { getHour } from '../../common/service';
+import { useTime } from '../../hooks';
 
-interface IVideo {
-    hour: FormattedHour
-}
-
-export const Video = ({ hour }: IVideo) => {
+export const Video = () => {
+    const time: Date = useTime();
+    const hour: FormattedHour = getHour(time);
     const videoId: NHVideoId = NHVideoId[hour];
 
     return (
