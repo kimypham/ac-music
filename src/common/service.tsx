@@ -1,4 +1,4 @@
-import { FormattedHour } from '../../common';
+import { FormattedHour } from '.';
 
 export const getHour = (time: Date): FormattedHour => {
     const currentHour: number = time.getHours();
