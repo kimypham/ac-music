@@ -9,8 +9,8 @@ import { VolumeControl } from '../VolumeControl';
 
 
 const initialSettings: ISettings = {
-    gameSoundtrack: 'NH',
-    weatherVariant: 'real',
+    gameSoundtrack: GameSoundtrackValue.NH,
+    weatherVariant: WeatherVariantValue.Real,
     rainSoundEffectOn: false,
     thunderSoundEffectOn: false
 };
