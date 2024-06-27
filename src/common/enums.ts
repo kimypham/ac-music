@@ -23,7 +23,7 @@ export enum FormattedHour {
     '9PM' = '9PM',
     '10PM' = '10PM',
     '11PM' = '11PM'
-}
+};
 
 export enum NHVideoId {
     '12AM' = 'V_9Nfwk9yWo',
@@ -50,4 +50,54 @@ export enum NHVideoId {
     '9PM' = 'LXhG5Lajj7I',
     '10PM' = 'DrQSk1Pch8w',
     '11PM' = 'QC5Y4TvkMIo'
-}
+};
+
+export enum LocalStorageKey {
+    GameSoundtrack = 'gameSoundtrack',
+    WeatherVariant = 'weatherVariant',
+    RainSoundEffectOn = 'rainSoundEffectOn',
+    ThunderSoundEffectOn = 'thunderSoundEffectOn',
+    Object = 'object'
+};
+
+export enum GameSoundtrackValue {
+    Original = 'original',
+    WWCF = 'ww/cf',
+    NL = 'nl',
+    NH = 'nh',
+    Random = 'gameSoundtrackRandom'
+};
+
+export enum GameSoundtrackLabel {
+    Original = 'Original',
+    WWCF = 'WW/CF',
+    NL = 'NL',
+    NH = 'NH',
+    Random = 'Random'
+};
+
+export enum WeatherVariantValue {
+    Real = 'real',
+    Normal = 'normal',
+    Rainy = 'rainy',
+    Snowy = 'snowy',
+    Random = 'weatherVariantRandom'
+};
+
+export enum WeatherVariantLabel {
+    Real = 'Real',
+    Normal = 'Normal',
+    Rainy = 'Rainy',
+    Snowy = 'Snowy',
+    Random = 'Random'
+};
+
+export enum SoundEffectValue {
+    Rain = 'rain',
+    Thunder = 'thunder',
+};
+
+export enum SoundEffectLabel {
+    Rain = 'Rain',
+    Thunder = 'Thunder',
+};
