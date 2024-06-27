@@ -1,95 +1,99 @@
 import './VideoSettings.css';
-import { PropsWithChildren } from 'react';
-import { VolumeControl } from '..';
+import { useEffect, ChangeEvent } from 'react';
+import { useState } from 'react';
+import { GameSoundtrackLabel, GameSoundtrackValue, ISettings, LocalStorageKey, SoundEffectLabel, SoundEffectValue, WeatherVariantLabel, WeatherVariantValue } from '../../common';
+import { VideoSettingsGroup } from '../VideoSettingsGroup';
+import { RadioInputGroup } from '../RadioInputGroup';
+import { Toggle } from '../Toggle';
+import { VolumeControl } from '../VolumeControl';
+
+
+const initialSettings: ISettings = {
+    gameSoundtrack: 'NH',
+    weatherVariant: 'real',
+    rainSoundEffectOn: false,
+    thunderSoundEffectOn: false
+};
+
+const getFromLocalStorage = (key: LocalStorageKey): string | void => {
+    const localStorageValue: string | null = localStorage.getItem(key);
+
+    if (localStorageValue) {
+        return localStorageValue;
+    };
+};
 
 export const VideoSettings = () => {
+    const [settings, setSettings] = useState<ISettings>(JSON.parse((getFromLocalStorage(LocalStorageKey.Object) ?? JSON.stringify(initialSettings))) as ISettings);
 
-    interface ISettingsGroupProps extends PropsWithChildren<{}> {
-        title: string;
+    useEffect(() => {
+        localStorage.setItem(LocalStorageKey.Object, JSON.stringify(settings));
+    }, [settings]);
+
+    interface IHandleOptionChangeProps {
+        changeEvent: ChangeEvent<HTMLInputElement>;
+        stateVariable: LocalStorageKey;
     };
 
-    const SettingsGroup = ({ title, children }: ISettingsGroupProps) => {
-        return (
-            <div className='mb-[30px]'>
-                <p>{title}</p>
-                <div className="flex gap-[10px] text-[14px] mt-[14px] justify-center">
-                    {children}
-                </div>
-            </div>
-        )
+    const handleOptionChange = ({ changeEvent, stateVariable }: IHandleOptionChangeProps): void => {
+        const isCheckboxChanged: boolean = stateVariable == LocalStorageKey.RainSoundEffectOn || stateVariable == LocalStorageKey.ThunderSoundEffectOn;
+        const value: string | boolean = isCheckboxChanged ? changeEvent.target.checked : changeEvent.target.value;
+
+        const newObject: ISettings = { ...settings, [stateVariable]: value };
+        setSettings(newObject);
     };
 
     return (
         <div className='flex-col text-[20px]'>
-            <SettingsGroup title='Change soundtrack'>
-                <input type="radio" name="gameSoundtrack" id="original" />
-                <label role="radio" className="radio" htmlFor="original">
-                    Original
-                </label>
-                <input type="radio" name="gameSoundtrack" id="ww/cf" />
-                <label role="radio" className="radio" htmlFor="ww/cf">
-                    WW/CF
-                </label>
-                <input type="radio" name="gameSoundtrack" id="nl" />
-                <label role="radio" className="radio" htmlFor="nl">
-                    NL
-                </label>
-                <input type="radio" name="gameSoundtrack" id="nh" defaultChecked />
-                <label role="radio" className="radio" htmlFor="nh">
-                    NH
-                </label>
-                <input type="radio" name="gameSoundtrack" id="gameSoundtrackRandom" />
-                <label role="radio" className="radio" htmlFor="gameSoundtrackRandom">
-                    Random
-                </label>
-            </SettingsGroup>
+            <VideoSettingsGroup title='Change soundtrack'>
+                <RadioInputGroup
+                    name={LocalStorageKey.GameSoundtrack}
+                    valuesLabels={[
+                        { value: GameSoundtrackValue.Original, label: GameSoundtrackLabel.Original },
+                        { value: GameSoundtrackValue.WWCF, label: GameSoundtrackLabel.WWCF },
+                        { value: GameSoundtrackValue.NL, label: GameSoundtrackLabel.NL },
+                        { value: GameSoundtrackValue.NH, label: GameSoundtrackLabel.NH },
+                        { value: GameSoundtrackValue.Random, label: GameSoundtrackLabel.Random }
+                    ]}
+                    selectedOption={settings.gameSoundtrack}
+                    onChange={(changeEvent) => handleOptionChange({ changeEvent, stateVariable: LocalStorageKey.GameSoundtrack })}
+                />
+            </VideoSettingsGroup>
 
-            <SettingsGroup title='Change weather variant'>
-                <input type="radio" name="weatherVariant" id="real" defaultChecked />
-                <label role="radio" className="radio" htmlFor="real">
-                    Real
-                </label>
-                <input type="radio" name="weatherVariant" id="normal" />
-                <label role="radio" className="radio" htmlFor="normal">
-                    Normal
-                </label>
-                <input type="radio" name="weatherVariant" id="rainy" />
-                <label role="radio" className="radio" htmlFor="rainy">
-                    Rainy
-                </label>
-                <input type="radio" name="weatherVariant" id="snowy" />
-                <label role="radio" className="radio" htmlFor="snowy">
-                    Snowy
-                </label>
-                <input type="radio" name="weatherVariant" id="weatherVariantRandom" />
-                <label role="radio" className="radio" htmlFor="weatherVariantRandom">
-                    Random
-                </label>
-            </SettingsGroup>
+            <VideoSettingsGroup title='Change weather variant'>
+                <RadioInputGroup
+                    name={LocalStorageKey.WeatherVariant}
+                    valuesLabels={[
+                        { value: WeatherVariantValue.Real, label: WeatherVariantLabel.Real },
+                        { value: WeatherVariantValue.Normal, label: WeatherVariantLabel.Normal },
+                        { value: WeatherVariantValue.Rainy, label: WeatherVariantLabel.Rainy },
+                        { value: WeatherVariantValue.Snowy, label: WeatherVariantLabel.Snowy },
+                        { value: WeatherVariantValue.Random, label: WeatherVariantLabel.Random }
+                    ]}
+                    selectedOption={settings.weatherVariant}
+                    onChange={(changeEvent) => handleOptionChange({ changeEvent, stateVariable: LocalStorageKey.WeatherVariant })}
+                />
+            </VideoSettingsGroup>
 
-            <SettingsGroup title='Sound effects'>
+            <VideoSettingsGroup title='Sound effects'>
                 <div className='flex-col'>
                     <div className='flex gap-[50px]'>
-                        <div className='flex items-center'>
-                            <p>Rain</p>
-                            <label className="toggle">
-                                <input type="checkbox" name="soundEffects" id="rain" />
-                                <span className="toggleCircle" />
-                            </label>
-                        </div>
-                        <div className='flex items-center'>
-                            <p>Thunder</p>
-                            <label className="toggle">
-                                <input type="checkbox" name="soundEffects" id="thunder" />
-                                <span className="toggleCircle" />
-                            </label>
-                        </div>
+                        <Toggle
+                            valuesLabel={{ value: SoundEffectValue.Rain, label: SoundEffectLabel.Rain }}
+                            selectedOption={settings.rainSoundEffectOn}
+                            onChange={(changeEvent) => handleOptionChange({ changeEvent: changeEvent, stateVariable: LocalStorageKey.RainSoundEffectOn })}
+                        />
+                        <Toggle
+                            valuesLabel={{ value: SoundEffectValue.Thunder, label: SoundEffectLabel.Thunder }}
+                            selectedOption={settings.thunderSoundEffectOn}
+                            onChange={(changeEvent) => handleOptionChange({ changeEvent: changeEvent, stateVariable: LocalStorageKey.ThunderSoundEffectOn })}
+                        />
                     </div>
                     <div className='flex mt-[8px]'>
                         <VolumeControl />
                     </div>
                 </div>
-            </SettingsGroup >
+            </VideoSettingsGroup >
         </div >
     );
 };

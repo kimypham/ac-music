@@ -5,3 +5,6 @@ export * from './VideoControls';
 export * from './MainText';
 export * from './VideoSettings';
 export * from './VolumeControl';
+export * from './VideoSettingsGroup';
+export * from './RadioInputGroup';
+export * from './Toggle';
