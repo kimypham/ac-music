@@ -1,8 +1,8 @@
 import { GameSoundtrackLabel, GameSoundtrackValue, SoundEffectLabel, SoundEffectValue, WeatherVariantLabel, WeatherVariantValue } from './enums';
 
 export interface ISettings {
-    gameSoundtrack: string,
-    weatherVariant: string,
+    gameSoundtrack: GameSoundtrackValue,
+    weatherVariant: WeatherVariantValue,
     rainSoundEffectOn: boolean,
     thunderSoundEffectOn: boolean,
 }
