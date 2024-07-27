@@ -1,27 +1,15 @@
 import { PropsWithChildren } from 'react';
 import { FormattedHour, GameSoundtrackLabel, GameSoundtrackValue } from '../../common';
 import { useTime } from '../../hooks';
-import { getHour, getSettingsFromLocalStorage } from '../../common/service';
+import { getHour, getSettingsFromLocalStorage, getSoundtrackLabelFromValue } from '../../common/service';
 
 export const MainText = () => {
     const time: Date = useTime();
     const timeString: string = time.toLocaleTimeString(['en-AU'], { timeStyle: 'short' }).split(' ').join('');
     const hour: FormattedHour = getHour(time);
 
-    const getLabelFromValue = (value: GameSoundtrackValue): GameSoundtrackLabel => {
-        const valueToLabelMap = {
-            [GameSoundtrackValue.Original]: GameSoundtrackLabel.Original,
-            [GameSoundtrackValue.WWCF]: GameSoundtrackLabel.WWCF,
-            [GameSoundtrackValue.NL]: GameSoundtrackLabel.NL,
-            [GameSoundtrackValue.NH]: GameSoundtrackLabel.NH,
-            [GameSoundtrackValue.Random]: GameSoundtrackLabel.Random,
-        };
-
-        return valueToLabelMap[value];
-    };
-
     const soundtrackValue: GameSoundtrackValue = getSettingsFromLocalStorage().gameSoundtrack;
-    const soundtrack: GameSoundtrackLabel = getLabelFromValue(soundtrackValue);
+    const soundtrack: GameSoundtrackLabel = getSoundtrackLabelFromValue(soundtrackValue);
 
 
     const HighlightText = ({ children }: PropsWithChildren) => {

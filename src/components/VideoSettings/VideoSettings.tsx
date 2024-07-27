@@ -1,12 +1,13 @@
 import './VideoSettings.css';
 import { useEffect, ChangeEvent } from 'react';
 import { useState } from 'react';
-import { GameSoundtrackLabel, GameSoundtrackValue, ISettings, LocalStorageKey, SoundEffectLabel, SoundEffectValue, WeatherVariantLabel, WeatherVariantValue } from '../../common';
+import { ISettings, LocalStorageKey, SoundEffectLabel, SoundEffectValue } from '../../common';
 import { VideoSettingsGroup } from '../VideoSettingsGroup';
 import { RadioInputGroup } from '../RadioInputGroup';
 import { Toggle } from '../Toggle';
 import { VolumeControl } from '../VolumeControl';
 import { getSettingsFromLocalStorage } from '../../common/service';
+import { GameSoundtrackList, WeatherVariantList } from '../../common/constants';
 
 export const VideoSettings = () => {
     const [settings, setSettings] = useState<ISettings>(getSettingsFromLocalStorage);
@@ -33,13 +34,7 @@ export const VideoSettings = () => {
             <VideoSettingsGroup title='Change soundtrack'>
                 <RadioInputGroup
                     name={LocalStorageKey.GameSoundtrack}
-                    valuesLabels={[
-                        { value: GameSoundtrackValue.Original, label: GameSoundtrackLabel.Original },
-                        { value: GameSoundtrackValue.WWCF, label: GameSoundtrackLabel.WWCF },
-                        { value: GameSoundtrackValue.NL, label: GameSoundtrackLabel.NL },
-                        { value: GameSoundtrackValue.NH, label: GameSoundtrackLabel.NH },
-                        { value: GameSoundtrackValue.Random, label: GameSoundtrackLabel.Random }
-                    ]}
+                    values={GameSoundtrackList}
                     selectedOption={settings.gameSoundtrack}
                     onChange={(changeEvent) => handleOptionChange({ changeEvent, stateVariable: LocalStorageKey.GameSoundtrack })}
                 />
@@ -48,13 +43,7 @@ export const VideoSettings = () => {
             <VideoSettingsGroup title='Change weather variant'>
                 <RadioInputGroup
                     name={LocalStorageKey.WeatherVariant}
-                    valuesLabels={[
-                        { value: WeatherVariantValue.Real, label: WeatherVariantLabel.Real },
-                        { value: WeatherVariantValue.Normal, label: WeatherVariantLabel.Normal },
-                        { value: WeatherVariantValue.Rainy, label: WeatherVariantLabel.Rainy },
-                        { value: WeatherVariantValue.Snowy, label: WeatherVariantLabel.Snowy },
-                        { value: WeatherVariantValue.Random, label: WeatherVariantLabel.Random }
-                    ]}
+                    values={WeatherVariantList}
                     selectedOption={settings.weatherVariant}
                     onChange={(changeEvent) => handleOptionChange({ changeEvent, stateVariable: LocalStorageKey.WeatherVariant })}
                 />
