@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, Fragment } from 'react';
 import { GameSoundtrackLabel, GameSoundtrackValue, LocalStorageKey, WeatherVariantLabel, WeatherVariantValue } from '../../common';
 import { getSoundtrackLabelFromValue, getWeatherLabelFromValue } from '../../common/service';
 
@@ -20,12 +20,12 @@ export const RadioInputGroup = ({ name, values, selectedOption, onChange }: IInp
                 const label: GameSoundtrackLabel | WeatherVariantLabel = isGameSoundtrackValue(value) ? getSoundtrackLabelFromValue(value) : getWeatherLabelFromValue(value);
 
                 return (
-                    <>
+                    <Fragment key={value}>
                         <input type='radio' name={name} id={value} value={value} checked={selectedOption == value} onChange={onChange} />
                         <label role='radio' className='radio' htmlFor={value}>
                             {label}
                         </label>
-                    </>
+                    </Fragment>
                 );
             })}
         </>
