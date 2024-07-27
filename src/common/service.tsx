@@ -1,4 +1,5 @@
-import { FormattedHour, GameSoundtrackValue, LocalStorageKey, WeatherVariantValue } from './enums';
+import { soundtrackValueMap, weatherValueMap } from './constants';
+import { FormattedHour, GameSoundtrackLabel, GameSoundtrackValue, LocalStorageKey, WeatherVariantLabel, WeatherVariantValue } from './enums';
 import { ISettings } from './interfaces';
 
 export const getHour = (time: Date): FormattedHour => {
@@ -23,4 +24,8 @@ export const getSettingsFromLocalStorage = (): ISettings => {
     };
 
     return JSON.parse((getFromLocalStorage(LocalStorageKey.Object) ?? JSON.stringify(initialSettings)));
-}
+};
+
+export const getSoundtrackLabelFromValue = (value: GameSoundtrackValue): GameSoundtrackLabel => (soundtrackValueMap[value]);
+
+export const getWeatherLabelFromValue = (value: WeatherVariantValue): WeatherVariantLabel => (weatherValueMap[value]);
