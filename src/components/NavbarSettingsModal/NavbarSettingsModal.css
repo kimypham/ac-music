@@ -1,4 +1,4 @@
-input[type="radio"] {
+/* input[type="radio"] {
     width: 16px;
     height: 16px;
 }
@@ -15,4 +15,4 @@ input[type="radio"]:not(:checked):not(:disabled) {
 
 .shadow {
     box-shadow: 0 8px 4px 0 rgba(24, 122, 190, 0.25);
-}
+} */

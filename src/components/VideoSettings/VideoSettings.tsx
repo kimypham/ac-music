@@ -6,25 +6,10 @@ import { VideoSettingsGroup } from '../VideoSettingsGroup';
 import { RadioInputGroup } from '../RadioInputGroup';
 import { Toggle } from '../Toggle';
 import { VolumeControl } from '../VolumeControl';
-
-
-const initialSettings: ISettings = {
-    gameSoundtrack: GameSoundtrackValue.NH,
-    weatherVariant: WeatherVariantValue.Real,
-    rainSoundEffectOn: false,
-    thunderSoundEffectOn: false
-};
-
-const getFromLocalStorage = (key: LocalStorageKey): string | void => {
-    const localStorageValue: string | null = localStorage.getItem(key);
-
-    if (localStorageValue) {
-        return localStorageValue;
-    };
-};
+import { getSettingsFromLocalStorage } from '../../common/service';
 
 export const VideoSettings = () => {
-    const [settings, setSettings] = useState<ISettings>(JSON.parse((getFromLocalStorage(LocalStorageKey.Object) ?? JSON.stringify(initialSettings))) as ISettings);
+    const [settings, setSettings] = useState<ISettings>(getSettingsFromLocalStorage);
 
     useEffect(() => {
         localStorage.setItem(LocalStorageKey.Object, JSON.stringify(settings));

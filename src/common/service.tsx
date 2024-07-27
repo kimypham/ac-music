@@ -1,4 +1,5 @@
-import { FormattedHour } from '.';
+import { FormattedHour, GameSoundtrackValue, LocalStorageKey, WeatherVariantValue } from './enums';
+import { ISettings } from './interfaces';
 
 export const getHour = (time: Date): FormattedHour => {
     const currentHour: number = time.getHours();
@@ -8,3 +9,18 @@ export const getHour = (time: Date): FormattedHour => {
 
     return FormattedHour[hourString as keyof typeof FormattedHour];
 };
+
+export const getSettingsFromLocalStorage = (): ISettings => {
+    const getFromLocalStorage = (key: LocalStorageKey): string | void => {
+        return localStorage.getItem(key) ?? undefined;
+    };
+
+    const initialSettings: ISettings = {
+        gameSoundtrack: GameSoundtrackValue.NH,
+        weatherVariant: WeatherVariantValue.Real,
+        rainSoundEffectOn: false,
+        thunderSoundEffectOn: false
+    };
+
+    return JSON.parse((getFromLocalStorage(LocalStorageKey.Object) ?? JSON.stringify(initialSettings)));
+}
