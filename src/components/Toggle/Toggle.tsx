@@ -1,18 +1,18 @@
-import { IValueLabel } from '../../common';
 import { ChangeEvent } from 'react';
+import { SoundEffectValue, getSoundEffectLabelFromValue } from '../../common';
 
 interface IToggleProps {
-    valuesLabel: IValueLabel;
+    value: SoundEffectValue;
     selectedOption: boolean;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Toggle = ({ valuesLabel, selectedOption, onChange }: IToggleProps) => {
+export const Toggle = ({ value, selectedOption, onChange }: IToggleProps) => {
     return (
         <div className='flex items-center'>
-            <p>{valuesLabel.label}</p>
+            <p>{getSoundEffectLabelFromValue(value)}</p>
             <label className="toggle">
-                <input type="checkbox" name="soundEffects" id={valuesLabel.value} checked={selectedOption} onChange={onChange} />
+                <input type="checkbox" name="soundEffects" id={value} checked={selectedOption} onChange={onChange} />
                 <span className="toggleCircle" />
             </label>
         </div>

@@ -1,4 +1,4 @@
-import { GameSoundtrackLabel, GameSoundtrackValue, WeatherVariantLabel, WeatherVariantValue } from './enums';
+import { GameSoundtrackLabel, GameSoundtrackValue, SoundEffectLabel, SoundEffectValue, WeatherVariantLabel, WeatherVariantValue } from './enums';
 
 export const GameSoundtrackList = [
     GameSoundtrackValue.Original,
@@ -30,4 +30,9 @@ export const weatherValueMap: Record<WeatherVariantValue, WeatherVariantLabel> =
     [WeatherVariantValue.Rainy]: WeatherVariantLabel.Rainy,
     [WeatherVariantValue.Snowy]: WeatherVariantLabel.Snowy,
     [WeatherVariantValue.Random]: WeatherVariantLabel.Random
+};
+
+export const soundEffectValueMap: Record<SoundEffectValue, SoundEffectLabel> = {
+    [SoundEffectValue.Rain]: SoundEffectLabel.Rain,
+    [SoundEffectValue.Thunder]: SoundEffectLabel.Thunder
 };
