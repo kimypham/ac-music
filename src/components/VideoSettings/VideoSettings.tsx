@@ -53,12 +53,12 @@ export const VideoSettings = () => {
                 <div className='flex-col'>
                     <div className='flex gap-[50px]'>
                         <Toggle
-                            valuesLabel={{ value: SoundEffectValue.Rain, label: SoundEffectLabel.Rain }}
+                            value={SoundEffectValue.Rain}
                             selectedOption={settings.rainSoundEffectOn}
                             onChange={(changeEvent) => handleOptionChange({ changeEvent: changeEvent, stateVariable: LocalStorageKey.RainSoundEffectOn })}
                         />
                         <Toggle
-                            valuesLabel={{ value: SoundEffectValue.Thunder, label: SoundEffectLabel.Thunder }}
+                            value={SoundEffectValue.Thunder}
                             selectedOption={settings.thunderSoundEffectOn}
                             onChange={(changeEvent) => handleOptionChange({ changeEvent: changeEvent, stateVariable: LocalStorageKey.ThunderSoundEffectOn })}
                         />
