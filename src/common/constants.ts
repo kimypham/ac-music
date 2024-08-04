@@ -1,4 +1,5 @@
 import { GameSoundtrackLabel, GameSoundtrackValue, SoundEffectLabel, SoundEffectValue, WeatherVariantLabel, WeatherVariantValue } from './enums';
+import { ISettings } from './interfaces';
 
 export const GameSoundtrackList = [
     GameSoundtrackValue.Original,
@@ -35,4 +36,11 @@ export const weatherValueMap: Record<WeatherVariantValue, WeatherVariantLabel> =
 export const soundEffectValueMap: Record<SoundEffectValue, SoundEffectLabel> = {
     [SoundEffectValue.Rain]: SoundEffectLabel.Rain,
     [SoundEffectValue.Thunder]: SoundEffectLabel.Thunder
+};
+
+export const initialSettings: ISettings = {
+    gameSoundtrack: GameSoundtrackValue.NH,
+    weatherVariant: WeatherVariantValue.Real,
+    rainSoundEffectOn: false,
+    thunderSoundEffectOn: false
 };

@@ -1,16 +1,19 @@
-import './VideoSettings.css';
-import { useEffect, ChangeEvent } from 'react';
-import { useState } from 'react';
-import { ISettings, LocalStorageKey, SoundEffectLabel, SoundEffectValue } from '../../common';
-import { VideoSettingsGroup } from '../VideoSettingsGroup';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { createSearchParams, SetURLSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
+import { ISettings, LocalStorageKey, SoundEffectValue } from '../../common';
+import { GameSoundtrackList, WeatherVariantList } from '../../common/constants';
 import { RadioInputGroup } from '../RadioInputGroup';
 import { Toggle } from '../Toggle';
+import { VideoSettingsGroup } from '../VideoSettingsGroup';
 import { VolumeControl } from '../VolumeControl';
-import { getSettingsFromLocalStorage } from '../../common/service';
-import { GameSoundtrackList, WeatherVariantList } from '../../common/constants';
+import './VideoSettings.css';
+import { getSettings } from './VideoSettings.service';
 
 export const VideoSettings = () => {
-    const [settings, setSettings] = useState<ISettings>(getSettingsFromLocalStorage);
+    const [searchParams]: [URLSearchParams, SetURLSearchParams] = useSearchParams();
+
+    const [settings, setSettings] = useState<ISettings>(getSettings(searchParams));
+    const navigate = useNavigate();
 
     useEffect(() => {
         localStorage.setItem(LocalStorageKey.Object, JSON.stringify(settings));
@@ -25,8 +28,17 @@ export const VideoSettings = () => {
         const isCheckboxChanged: boolean = stateVariable == LocalStorageKey.RainSoundEffectOn || stateVariable == LocalStorageKey.ThunderSoundEffectOn;
         const value: string | boolean = isCheckboxChanged ? changeEvent.target.checked : changeEvent.target.value;
 
-        const newObject: ISettings = { ...settings, [stateVariable]: value };
-        setSettings(newObject);
+        const newSettings: ISettings = { ...settings, [stateVariable]: value };
+        setSettings(newSettings);
+
+        navigate({
+            search: createSearchParams({
+                game: newSettings.gameSoundtrack,
+                weather: newSettings.weatherVariant,
+                rain: `${newSettings.rainSoundEffectOn}`,
+                thunder: `${newSettings.thunderSoundEffectOn}`
+            }).toString()
+        });
     };
 
     return (
