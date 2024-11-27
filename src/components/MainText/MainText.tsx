@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { FormattedHour, GameSoundtrackLabel, GameSoundtrackValue } from '../../common';
-import { useTime } from '../../hooks';
 import { getHour, getSettingsFromLocalStorage, getSoundtrackLabelFromValue } from '../../common/service';
+import { useTime } from '../../hooks';
 
 export const MainText = () => {
     const time: Date = useTime();
@@ -18,9 +18,15 @@ export const MainText = () => {
         </div>
     }
 
+    // return (
+    //     <p className="font-extrabold leading-loose">
+    //         It's currently <HighlightText>{timeString}</HighlightText> and <HighlightText>cloudy</HighlightText>!<br />
+    //         Now playing: <HighlightText>{hour} AC: {soundtrack} Soundtrack</HighlightText>
+    //     </p>
+    // )
     return (
         <p className="font-extrabold leading-loose">
-            It's currently <HighlightText>{timeString}</HighlightText> and <HighlightText>cloudy</HighlightText>!<br />
+            It's currently <HighlightText>{timeString}</HighlightText>!<br />
             Now playing: <HighlightText>{hour} AC: {soundtrack} Soundtrack</HighlightText>
         </p>
     )

@@ -1,11 +1,9 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { createSearchParams, SetURLSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
-import { ISettings, LocalStorageKey, SoundEffectValue } from '../../common';
-import { GameSoundtrackList, WeatherVariantList } from '../../common/constants';
+import { ISettings, LocalStorageKey } from '../../common';
+import { GameSoundtrackList } from '../../common/constants';
 import { RadioInputGroup } from '../RadioInputGroup';
-import { Toggle } from '../Toggle';
 import { VideoSettingsGroup } from '../VideoSettingsGroup';
-import { VolumeControl } from '../VolumeControl';
 import './VideoSettings.css';
 import { getSettings } from './VideoSettings.service';
 
@@ -34,9 +32,9 @@ export const VideoSettings = () => {
         navigate({
             search: createSearchParams({
                 game: newSettings.gameSoundtrack,
-                weather: newSettings.weatherVariant,
-                rain: `${newSettings.rainSoundEffectOn}`,
-                thunder: `${newSettings.thunderSoundEffectOn}`
+                // weather: newSettings.weatherVariant,
+                // rain: `${newSettings.rainSoundEffectOn}`,
+                // thunder: `${newSettings.thunderSoundEffectOn}`
             }).toString()
         });
     };
@@ -52,16 +50,16 @@ export const VideoSettings = () => {
                 />
             </VideoSettingsGroup>
 
-            <VideoSettingsGroup title='Change weather variant'>
+            {/* <VideoSettingsGroup title='Change weather variant'>
                 <RadioInputGroup
                     name={LocalStorageKey.WeatherVariant}
                     values={WeatherVariantList}
                     selectedOption={settings.weatherVariant}
                     onChange={(changeEvent) => handleOptionChange({ changeEvent, stateVariable: LocalStorageKey.WeatherVariant })}
                 />
-            </VideoSettingsGroup>
+            </VideoSettingsGroup> */}
 
-            <VideoSettingsGroup title='Sound effects'>
+            {/* <VideoSettingsGroup title='Sound effects'>
                 <div className='flex-col'>
                     <div className='flex gap-[50px]'>
                         <Toggle
@@ -79,7 +77,7 @@ export const VideoSettings = () => {
                         <VolumeControl />
                     </div>
                 </div>
-            </VideoSettingsGroup >
+            </VideoSettingsGroup > */}
         </div >
     );
 };
