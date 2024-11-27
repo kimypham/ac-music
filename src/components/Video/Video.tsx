@@ -1,8 +1,8 @@
+import { useEffect, useState } from 'react';
 import { FormattedHour, GameSoundtrackValue, NHVideoId, NLVideoId, OriginalVideoId, WWCFVideoId } from '../../common';
 import { getHour, getSettingsFromLocalStorage } from '../../common/service';
 import { GameSoundtrackOption, VideoId } from '../../common/types';
 import { useTime } from '../../hooks';
-import { useEffect, useState } from 'react';
 
 export const Video = () => {
     const [videoId, setVideoId] = useState<VideoId>();
@@ -37,8 +37,8 @@ export const Video = () => {
     }, [soundtrack]);
 
     return (
-        <iframe width="515" height="290" className='rounded-xl'
-            src={`https://www.youtube.com/embed/${videoId}?playlist=${videoId}&loop=1}`} >
+        <iframe width="515" height="290" className='rounded-xl' allowFullScreen
+            src={`https://www.youtube.com/embed/${videoId}?loop=1&color=white&iv_load_policy=3&playlist=${videoId}`} >
         </iframe>
     );
 };
