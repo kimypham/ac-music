@@ -1,23 +1,20 @@
-import { Navbar } from './components/Navbar';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import { Footer, Navbar } from './components';
 import { About, Main } from './pages';
-import { Footer } from './components';
 
 function App() {
     return (
         <div className='flex flex-col h-svh font-main text-[#FFF9F5] dark:text-dm-white bg-lm-bg-green dark:bg-dm-bg-dark-green'>
-            <BrowserRouter>
+            <HashRouter>
                 <Navbar />
                 <Routes>
-                    <Route>
-                        <Route path={"about"} element={<About />} />
-                        <Route path={"/"} element={<Main />} />
-                        <Route path={"*"} element={<Main />} />
-                    </Route>
+                    <Route path={"/about"} element={<About />} />
+                    <Route path={"/"} element={<Main />} />
+                    <Route path={"*"} element={<Main />} />
                 </Routes>
                 <Footer />
-            </BrowserRouter>
-        </div>
+            </HashRouter>
+        </div >
     )
 }
 
