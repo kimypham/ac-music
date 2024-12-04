@@ -37,8 +37,10 @@ export const Video = () => {
     }, [soundtrack]);
 
     return (
-        <iframe width="515" height="290" className='rounded-xl' allowFullScreen
-            src={`https://www.youtube.com/embed/${videoId}?loop=1&color=white&iv_load_policy=3&playlist=${videoId}`} >
-        </iframe>
+        <div className='overflow-hidden pt-[56.25%] w-full relative'>
+            <iframe className='rounded-xl w-full h-full absolute top-0 bottom-0 left-0 right-0' allowFullScreen
+                src={`https://www.youtube.com/embed/${videoId}?loop=1&color=white&iv_load_policy=3&playlist=${videoId}`} >
+            </iframe>
+        </div>
     );
 };

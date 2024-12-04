@@ -11,12 +11,14 @@
     --lm-hover-white: #e6ded8;
     --lm-light-brown: #f9f6f2;
     --lm-white: #FFF9F5;
+    --lm-bg-green: #529D7D;
     --dm-button-hover: #00696e;
 }
 
 body {
-    width: 100vw;
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: var(--lm-bg-green);
 }
 
 /* Link hover animation based off code by Harshil Patel from https://css-tricks.com/css-link-hover-effects/ */
@@ -39,3 +41,24 @@ body {
 input:hover {
     cursor: pointer;
 }
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--dm-bg-dark-green);
+    }
+}
+
+.container {
+    /* overflow: hidden; */
+    padding-top: 56.25%; /* 16:9 */
+    position: relative;
+  } 
+  
+  .responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+  }

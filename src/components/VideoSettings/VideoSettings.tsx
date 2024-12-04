@@ -40,7 +40,7 @@ export const VideoSettings = () => {
     };
 
     return (
-        <div className='flex-col text-[20px]'>
+        <div className='flex-col text-[16px] lg:text-[20px]'>
             <VideoSettingsGroup title='Change soundtrack'>
                 <RadioInputGroup
                     name={LocalStorageKey.GameSoundtrack}
