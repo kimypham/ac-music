@@ -1,6 +1,6 @@
 export const Footer = () => {
     return (
-        <div className="flex-col z-10 text-[12px] my-[24px] h-fit self-center text-center">
+        <div className="z-10 text-[8px] lg:text-[12px] m-[12px] h-fit self-center text-center">
             <p className="font-bold">
                 Made with ♥ by Kim Pham - View code on <a className="link" href="https://github.com/kimypham/ac-music" target="_blank">Github</a> - Questions/comments? <a className="link" href="mailto:km.phm2@gmail.com">Contact me!</a>
             </p>

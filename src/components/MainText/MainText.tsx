@@ -13,9 +13,9 @@ export const MainText = () => {
 
 
     const HighlightText = ({ children }: PropsWithChildren) => {
-        return <div className="text-lm-text-blue dark:text-dm-text-green inline">
+        return <p className="text-lm-text-blue dark:text-dm-text-green inline">
             {children}
-        </div>
+        </p>
     }
 
     // return (
@@ -25,9 +25,9 @@ export const MainText = () => {
     //     </p>
     // )
     return (
-        <p className="font-extrabold leading-loose">
+        <div className="font-extrabold leading-loose text-[20px] lg:text-[32px]">
             It's currently <HighlightText>{timeString}</HighlightText>!<br />
             Now playing: <HighlightText>{hour} AC: {soundtrack} Soundtrack</HighlightText>
-        </p>
+        </div>
     )
 }
