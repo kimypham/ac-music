@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FormattedHour, GameSoundtrackValue, NHVideoId, NLVideoId, OriginalVideoId, WWCFVideoId } from '../../common';
+import { FormattedHour, GameSoundtrackValue, GameTime, NHVideoId, NLVideoId, OriginalVideoId, WWCFVideoId } from '../../common';
 import { getHour, getSettingsFromLocalStorage } from '../../common/service';
 import { GameSoundtrackOption, VideoId } from '../../common/types';
 import { useTime } from '../../hooks';
@@ -9,7 +9,8 @@ export const Video = () => {
 
     const soundtrack: GameSoundtrackValue = getSettingsFromLocalStorage().gameSoundtrack;
     const time: Date = useTime();
-    const hour: FormattedHour = getHour(time);
+    const customHour: GameTime = getSettingsFromLocalStorage().gameTime;
+    const hour: FormattedHour = FormattedHour[customHour] ?? getHour(time);
 
     const getRandomSoundtrackVideoId = (hour: FormattedHour): VideoId => {
         const gameSoundtrackList: GameSoundtrackOption[] = [GameSoundtrackValue.Original, GameSoundtrackValue.WWCF, GameSoundtrackValue.NL, GameSoundtrackValue.NH];
@@ -34,7 +35,7 @@ export const Video = () => {
 
     useEffect(() => {
         setVideoId(soundtrack === GameSoundtrackValue.Random ? getRandomSoundtrackVideoId(hour) : getVideoId(soundtrack, hour));
-    }, [soundtrack]);
+    }, [soundtrack, hour]);
 
     return (
         <div className='overflow-hidden pt-[56.25%] w-full relative'>

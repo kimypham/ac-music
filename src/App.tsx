@@ -4,7 +4,7 @@ import { About, Main } from './pages';
 
 function App() {
     return (
-        <div className='flex flex-col h-svh px-0 lg:px-[96px] font-main text-[#FFF9F5] dark:text-dm-white bg-lm-bg-green dark:bg-dm-bg-dark-green'>
+        <div className='flex flex-col h-full px-0 lg:px-[96px] font-main text-[#FFF9F5] dark:text-dm-white bg-lm-bg-green dark:bg-dm-bg-dark-green'>
             <HashRouter>
                 <Navbar />
                 <Routes>

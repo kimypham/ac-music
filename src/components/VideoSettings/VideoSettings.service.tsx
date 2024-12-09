@@ -1,4 +1,4 @@
-import { GameSoundtrackValue, WeatherVariantValue, ISettings, LocalStorageKey, initialSettings } from "../../common";
+import { GameSoundtrackValue, ISettings, LocalStorageKey, WeatherVariantValue, initialSettings } from '../../common';
 
 const isGameSoundtrackValue = (value: string): value is GameSoundtrackValue => Object.values(GameSoundtrackValue).includes(value as GameSoundtrackValue);
 
@@ -8,7 +8,7 @@ const getBooleanSearchParamValue = (param: string | null, defaultValue: boolean)
 
 export const getSettings = (searchParams: URLSearchParams): ISettings => {
     const localSettings: string | null = localStorage.getItem(LocalStorageKey.Object);
-    const { gameSoundtrack, weatherVariant, rainSoundEffectOn, thunderSoundEffectOn }: ISettings = localSettings ? JSON.parse(localSettings) : initialSettings;
+    const { gameSoundtrack, weatherVariant, rainSoundEffectOn, thunderSoundEffectOn, gameTime }: ISettings = localSettings ? JSON.parse(localSettings) : initialSettings;
 
     const gameParam: string = searchParams.get("game") ?? '';
     const weatherParam: string = searchParams.get("weather") ?? '';
@@ -22,6 +22,7 @@ export const getSettings = (searchParams: URLSearchParams): ISettings => {
         gameSoundtrack: game,
         weatherVariant: weather,
         rainSoundEffectOn: rain,
-        thunderSoundEffectOn: thunder
+        thunderSoundEffectOn: thunder,
+        gameTime: gameTime
     };
 };

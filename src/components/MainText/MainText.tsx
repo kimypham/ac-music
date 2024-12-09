@@ -1,12 +1,14 @@
 import { PropsWithChildren } from 'react';
-import { FormattedHour, GameSoundtrackLabel, GameSoundtrackValue } from '../../common';
+import { FormattedHour, GameSoundtrackLabel, GameSoundtrackValue, GameTime } from '../../common';
 import { getHour, getSettingsFromLocalStorage, getSoundtrackLabelFromValue } from '../../common/service';
 import { useTime } from '../../hooks';
 
 export const MainText = () => {
     const time: Date = useTime();
     const timeString: string = time.toLocaleTimeString(['en-AU'], { timeStyle: 'short' }).split(' ').join('');
-    const hour: FormattedHour = getHour(time);
+
+    const customHour: GameTime = getSettingsFromLocalStorage().gameTime;
+    const hour: FormattedHour = FormattedHour[customHour] ?? getHour(time);
 
     const soundtrackValue: GameSoundtrackValue = getSettingsFromLocalStorage().gameSoundtrack;
     const soundtrack: GameSoundtrackLabel = getSoundtrackLabelFromValue(soundtrackValue);
