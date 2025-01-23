@@ -138,6 +138,7 @@ export enum LocalStorageKey {
     WeatherVariant = 'weatherVariant',
     RainSoundEffectOn = 'rainSoundEffectOn',
     ThunderSoundEffectOn = 'thunderSoundEffectOn',
+    GameTime = 'gameTime',
     Object = 'object'
 };
 
@@ -181,4 +182,32 @@ export enum SoundEffectValue {
 export enum SoundEffectLabel {
     Rain = 'Rain',
     Thunder = 'Thunder',
+};
+
+export enum GameTime {
+    Current = 'current',
+    Hour1am = '1AM',
+    Hour2am = '2AM',
+    Hour3am = '3AM',
+    Hour4am = '4AM',
+    Hour5am = '5AM',
+    Hour6am = '6AM',
+    Hour7am = '7AM',
+    Hour8am = '8AM',
+    Hour9am = '9AM',
+    Hour10am = '10AM',
+    Hour11am = '11AM',
+    Hour12pm = '12PM',
+    Hour1pm = '1PM',
+    Hour2pm = '2PM',
+    Hour3pm = '3PM',
+    Hour4pm = '4PM',
+    Hour5pm = '5PM',
+    Hour6pm = '6PM',
+    Hour7pm = '7PM',
+    Hour8pm = '8PM',
+    Hour9pm = '9PM',
+    Hour10pm = '10PM',
+    Hour11pm = '11PM',
+    Hour12am = '12AM',
 };

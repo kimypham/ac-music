@@ -7,7 +7,7 @@ export const Main = () => {
                 <div className='mt-[24px] mx-[12px]'>
                     <MainText />
                 </div>
-                <div className="flex flex-col lg:flex-row place-content-evenly items-center lg:mx-[24px]">
+                <div className="flex flex-col lg:flex-row place-content-evenly items-center mb-[24px] lg:mx-[24px]">
                     <div className="w-11/12 md:w-3/4 lg:w-1/2 h-full my-[24px]">
                         <Video />
                         {/* <VideoControls /> */}

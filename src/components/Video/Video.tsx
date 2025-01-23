@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FormattedHour, GameSoundtrackValue, NHVideoId, NLVideoId, OriginalVideoId, WWCFVideoId } from '../../common';
+import { FormattedHour, GameSoundtrackList, GameSoundtrackValue, NHVideoId, NLVideoId, OriginalVideoId, WWCFVideoId } from '../../common';
 import { getHour, getSettingsFromLocalStorage } from '../../common/service';
 import { GameSoundtrackOption, VideoId } from '../../common/types';
 import { useTime } from '../../hooks';
@@ -11,12 +11,9 @@ export const Video = () => {
     const time: Date = useTime();
     const hour: FormattedHour = getHour(time);
 
-    const getRandomSoundtrackVideoId = (hour: FormattedHour): VideoId => {
-        const gameSoundtrackList: GameSoundtrackOption[] = [GameSoundtrackValue.Original, GameSoundtrackValue.WWCF, GameSoundtrackValue.NL, GameSoundtrackValue.NH];
-        const randomNumber: number = Math.floor(Math.random() * gameSoundtrackList.length);
-
-        const randomSoundtrack: GameSoundtrackOption = gameSoundtrackList[randomNumber];
-        return getVideoId(randomSoundtrack, hour);
+    const getRandomSoundtrack = (): GameSoundtrackOption => {
+        const randomNumber: number = Math.floor(Math.random() * GameSoundtrackList.length);
+        return GameSoundtrackList[randomNumber] as GameSoundtrackOption;
     };
 
     const getVideoId = (soundtrack: GameSoundtrackOption, hour: FormattedHour): VideoId => {
@@ -33,8 +30,8 @@ export const Video = () => {
     };
 
     useEffect(() => {
-        setVideoId(soundtrack === GameSoundtrackValue.Random ? getRandomSoundtrackVideoId(hour) : getVideoId(soundtrack, hour));
-    }, [soundtrack]);
+        setVideoId(soundtrack === GameSoundtrackValue.Random ? getVideoId(getRandomSoundtrack(), hour) : getVideoId(soundtrack, hour));
+    }, [soundtrack, hour]);
 
     return (
         <div className='overflow-hidden pt-[56.25%] w-full relative'>
