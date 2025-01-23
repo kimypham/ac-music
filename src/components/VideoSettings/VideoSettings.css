@@ -17,6 +17,13 @@ input[type="checkbox"]:checked+.toggleCircle:hover {
     background-color: #62523a;
 }
 
+select {
+    background-color: var(--lm-hover-white);
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+
 .radio {
     background-color: var(--lm-hover-white);
     width: 85px;
@@ -24,13 +31,11 @@ input[type="checkbox"]:checked+.toggleCircle:hover {
     border-radius: 30px;
     align-content: center;
     cursor: pointer;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 .radio:hover,
-.toggleCircle:hover {
+.toggleCircle:hover,
+select:hover {
     background-color: #d2c7bf;
     transition: 300ms;
 }
@@ -88,12 +93,14 @@ input[type="checkbox"]:checked+.toggleCircle:before {
         background-color: #66dbc6;
     }
 
-    .radio {
+    .radio,
+    select {
         background-color: #00494d;
     }
 
     .radio:hover,
-    .toggleCircle:hover {
+    .toggleCircle:hover,
+    select:hover {
         background-color: var(--dm-button-hover);
     }
 

@@ -5,7 +5,7 @@ interface ISettingsGroupProps extends PropsWithChildren<{}> {
 };
 
 export const VideoSettingsGroup = ({ title, children }: ISettingsGroupProps) => (
-    <div>
+    <div className="mb-[14px]">
         <p>{title}</p>
         <div className="flex gap-[10px] text-[10px] lg:text-[14px] mt-[14px] justify-center">
             {children}
