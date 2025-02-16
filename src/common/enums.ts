@@ -25,114 +25,6 @@ export enum FormattedHour {
     '11PM' = '11PM'
 };
 
-export enum OriginalVideoId {
-    '12AM' = '9j9YEuFeDAw',
-    '1AM' = 'UMMRXzXs-_k',
-    '2AM' = '-GS2Uf2koDI',
-    '3AM' = 'se7iaIfFdoQ',
-    '4AM' = 'AzHvhnzxeEw',
-    '5AM' = '1auEF6PRm7Q',
-    '6AM' = 'hhlLbg4CRBc',
-    '7AM' = 'jcPIAICO-DI',
-    '8AM' = 'J22dco5U-nY',
-    '9AM' = 'odevRs61OqY',
-    '10AM' = 'uFq-VvnEa80',
-    '11AM' = '0dzoz1iOvws',
-    '12PM' = '4pmZrtO8_co',
-    '1PM' = 'dAABrbS8QeA',
-    '2PM' = 'hwENcKas4nU',
-    '3PM' = 'TMFHHTFEMPQ',
-    '4PM' = '_m_cI7cssPQ',
-    '5PM' = 'zcIDJd-ncHI',
-    '6PM' = '7nNsOcPfGxk',
-    '7PM' = 'T_454gyj9PE',
-    '8PM' = 'GlYzXvHQaDw',
-    '9PM' = 'Au8cSsWgYUY',
-    '10PM' = 'nB1xsg-X3-0',
-    '11PM' = 'Ar8sNQNvi90'
-};
-
-export enum WWCFVideoId {
-    '12AM' = 'V95zbEv-qLs',
-    '1AM' = 'yje6mLBCGGQ',
-    '2AM' = 'ER9Y14j9cv8',
-    '3AM' = 'Uiyki6MOXTE',
-    '4AM' = 'fHkIH_V4BR8',
-    '5AM' = 'jPhVfB7RJ6g',
-    '6AM' = 'X4PWU-ZXnUo',
-    '7AM' = 'yD6xHtzxKoE',
-    '8AM' = 'ZibbB-Oed6g',
-    '9AM' = 'CUmUCLSr9sM',
-    '10AM' = 'BSmsWF1rbmo',
-    '11AM' = 'pzXUzf159RQ',
-    '12PM' = 'xD-xDmjDmaY',
-    '1PM' = 'exKeVRw6CbE',
-    '2PM' = 'RcRsshUJ49g',
-    '3PM' = 'sHIdhAiQHSE',
-    '4PM' = 'W15e7_mZ6YM',
-    '5PM' = 'zTJvNYlwE3g',
-    '6PM' = 'Nom8hyUNs5A',
-    '7PM' = '4kzXhssr6k4',
-    '8PM' = 'g7frZDc-PZc',
-    '9PM' = 'X0q6GHsk4eo',
-    '10PM' = 'hhJzmoOYkTo',
-    '11PM' = 'qMeSD23TV9Y'
-};
-
-export enum NLVideoId {
-    '12AM' = '1B4bZ5wcmKk',
-    '1AM' = 'ywhmMSsAlH8',
-    '2AM' = 'BTOrMXO1ojs',
-    '3AM' = '8p3AGCeRn9g',
-    '4AM' = 'aJFd1YyfF5c',
-    '5AM' = 'FQgyiNR9j3I',
-    '6AM' = 'tt56iCKys9c',
-    '7AM' = 'j9TMZASq3tY',
-    '8AM' = '3Ft5Ts-k7nA',
-    '9AM' = 'cDMPoZAs0PU',
-    '10AM' = '-Q2gaCnAsRs',
-    '11AM' = 'jutfcjHEkPs',
-    '12PM' = 'UzWL1_Dm00s',
-    '1PM' = 'Uls_tg6PmC0',
-    '2PM' = '2-I9aWSmIJQ',
-    '3PM' = 'xV5c814tFkU',
-    '4PM' = '85X5qvS6vx8',
-    '5PM' = '9mujlcP7TOg',
-    '6PM' = 'PiWWuaJaV5s',
-    '7PM' = 'LamNB1zr138',
-    '8PM' = 'UYme4iSi85o',
-    '9PM' = 'IhxVTXsu-WI',
-    '10PM' = 'eLP3OXlVZKE',
-    '11PM' = 'xD_6Qu3uOy0'
-};
-
-export enum NHVideoId {
-    '12AM' = 'bEEKnt_Sr_s',
-    '1AM' = 'o6P2Qq8L5ME',
-    '2AM' = 'TqBDqiqlGtQ',
-    '3AM' = 'Bg_QdJgL-_U',
-    '4AM' = 'bz9Bn91aqEg',
-    '5AM' = 'EM3xKFyODEg',
-    '6AM' = 'iMYSofSlnFM',
-    '7AM' = 'ul_FJHwWB0Q',
-    '8AM' = 'O9nEprDGzOs',
-    '9AM' = 'Q2XxY88ieGk',
-    '10AM' = 'iEjH7uD544o',
-    '11AM' = 'oL95gHPfBPY',
-    '12PM' = 'B8wJJ4vYMw8',
-    '1PM' = '5wDWAM1tnGE',
-    '2PM' = 'txwtPJDjDtA',
-    '3PM' = 'qrALe3QFSL8',
-    '4PM' = 'TigX21NsbHI',
-    '5PM' = '2Y4oqntz1qs',
-    '6PM' = 'nvTGVTTdyK0',
-    '7PM' = 'TEGy7yDGJBs',
-    '8PM' = 'gmr01OBDUi8',
-    '9PM' = 'dT8At1WaVP4',
-    '10PM' = 'Hchf1GMPrZo',
-    '11PM' = 'vjHWLKe-cNA'
-};
-
 export enum LocalStorageKey {
     GameSoundtrack = 'gameSoundtrack',
     WeatherVariant = 'weatherVariant',
@@ -164,6 +56,12 @@ export enum WeatherVariantValue {
     Rainy = 'rainy',
     Snowy = 'snowy',
     Random = 'weatherVariantRandom'
+};
+
+export enum WeatherVariantOptions {
+    Normal = 'normal',
+    Rainy = 'rainy',
+    Snowy = 'snowy'
 };
 
 export enum WeatherVariantLabel {
