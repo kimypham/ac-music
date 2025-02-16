@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import { FormattedHour, GameSoundtrackList, GameSoundtrackValue, NHVideoId, NLVideoId, OriginalVideoId, WWCFVideoId } from '../../common';
+import { FormattedHour, GameSoundtrackList, GameSoundtrackValue, ISettings, NHVideoId, NLVideoId, OriginalVideoId, WeatherVariantOptionsList, WeatherVariantValue, WWCFVideoId } from '../../common';
 import { getHour, getSettingsFromLocalStorage } from '../../common/service';
-import { GameSoundtrackOption, VideoId } from '../../common/types';
+import { GameSoundtrackOption, WeatherVariantOption } from '../../common/types';
 import { useTime } from '../../hooks';
 
 export const Video = () => {
-    const [videoId, setVideoId] = useState<VideoId>();
+    const [videoId, setVideoId] = useState<string>();
 
-    const soundtrack: GameSoundtrackValue = getSettingsFromLocalStorage().gameSoundtrack;
+    const { gameSoundtrack: soundtrack, weatherVariant: weather }: ISettings = getSettingsFromLocalStorage();
     const time: Date = useTime();
     const hour: FormattedHour = getHour(time);
 
@@ -16,22 +16,26 @@ export const Video = () => {
         return GameSoundtrackList[randomNumber] as GameSoundtrackOption;
     };
 
-    const getVideoId = (soundtrack: GameSoundtrackOption, hour: FormattedHour): VideoId => {
-        switch (soundtrack) {
-            case GameSoundtrackValue.Original:
-                return OriginalVideoId[hour];
-            case GameSoundtrackValue.WWCF:
-                return WWCFVideoId[hour];
-            case GameSoundtrackValue.NL:
-                return NLVideoId[hour];
-            case GameSoundtrackValue.NH:
-                return NHVideoId[hour];
-        }
+    const getRandomWeather = (): WeatherVariantOption => {
+        const randomNumber: number = Math.floor(Math.random() * WeatherVariantOptionsList.length);
+        return WeatherVariantOptionsList[randomNumber] as WeatherVariantOption;
+    };
+
+    const getVideoId = (soundtrack: GameSoundtrackValue, weather: WeatherVariantOption, hour: FormattedHour): string => {
+        const videoIdMappings: Record<string, Record<FormattedHour, Record<WeatherVariantOption, string>>> = {
+            [GameSoundtrackValue.Original]: OriginalVideoId,
+            [GameSoundtrackValue.WWCF]: WWCFVideoId,
+            [GameSoundtrackValue.NL]: NLVideoId,
+            [GameSoundtrackValue.NH]: NHVideoId,
+        };
+        return videoIdMappings[soundtrack][hour][weather]
     };
 
     useEffect(() => {
-        setVideoId(soundtrack === GameSoundtrackValue.Random ? getVideoId(getRandomSoundtrack(), hour) : getVideoId(soundtrack, hour));
-    }, [soundtrack, hour]);
+        const selectedSoundtrack: GameSoundtrackOption = soundtrack === GameSoundtrackValue.Random ? getRandomSoundtrack() : soundtrack;
+        const selectedWeather: WeatherVariantOption = weather === WeatherVariantValue.Random ? getRandomWeather() : weather === WeatherVariantValue.Real ? WeatherVariantValue.Normal : weather
+        setVideoId(getVideoId(selectedSoundtrack, selectedWeather, hour));
+    }, [soundtrack, weather, hour]);
 
     return (
         <div className='overflow-hidden pt-[56.25%] w-full relative'>

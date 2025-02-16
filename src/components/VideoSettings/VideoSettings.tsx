@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { createSearchParams, SetURLSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { ISettings, LocalStorageKey } from '../../common';
-import { GameSoundtrackList } from '../../common/constants';
+import { GameSoundtrackList, WeatherVariantList } from '../../common/constants';
 import { RadioInputGroup } from '../RadioInputGroup';
 import { VideoSettingsGroup } from '../VideoSettingsGroup';
 import './VideoSettings.css';
@@ -33,8 +33,8 @@ export const VideoSettings = () => {
         navigate({
             search: createSearchParams({
                 game: newSettings.gameSoundtrack,
-                time: `${newSettings.gameTime}`
-                // weather: newSettings.weatherVariant,
+                time: `${newSettings.gameTime}`,
+                weather: newSettings.weatherVariant,
                 // rain: `${newSettings.rainSoundEffectOn}`,
                 // thunder: `${newSettings.thunderSoundEffectOn}`
             }).toString()
@@ -53,8 +53,8 @@ export const VideoSettings = () => {
         navigate({
             search: createSearchParams({
                 game: newSettings.gameSoundtrack,
-                time: `${newSettings.gameTime}`
-                // weather: newSettings.weatherVariant,
+                time: `${newSettings.gameTime}`,
+                weather: newSettings.weatherVariant,
                 // rain: `${newSettings.rainSoundEffectOn}`,
                 // thunder: `${newSettings.thunderSoundEffectOn}`
             }).toString()
@@ -69,6 +69,15 @@ export const VideoSettings = () => {
                     values={GameSoundtrackList}
                     selectedOption={settings.gameSoundtrack}
                     onChange={(changeEvent) => handleRadioOptionChange({ changeEvent, stateVariable: LocalStorageKey.GameSoundtrack })}
+                />
+            </VideoSettingsGroup>
+
+            <VideoSettingsGroup title='Change weather variant'>
+                <RadioInputGroup
+                    name={LocalStorageKey.WeatherVariant}
+                    values={WeatherVariantList}
+                    selectedOption={settings.weatherVariant}
+                    onChange={(changeEvent) => handleRadioOptionChange({ changeEvent, stateVariable: LocalStorageKey.WeatherVariant })}
                 />
             </VideoSettingsGroup>
 
@@ -101,15 +110,6 @@ export const VideoSettings = () => {
                     <option value="12AM">12am</option>
                 </select>
             </VideoSettingsGroup>
-
-            {/* <VideoSettingsGroup title='Change weather variant'>
-                <RadioInputGroup
-                    name={LocalStorageKey.WeatherVariant}
-                    values={WeatherVariantList}
-                    selectedOption={settings.weatherVariant}
-                    onChange={(changeEvent) => handleOptionChange({ changeEvent, stateVariable: LocalStorageKey.WeatherVariant })}
-                />
-            </VideoSettingsGroup> */}
 
             {/* <VideoSettingsGroup title='Sound effects'>
                 <div className='flex-col'>
