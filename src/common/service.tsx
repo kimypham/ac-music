@@ -28,3 +28,7 @@ export const getSoundtrackLabelFromValue = (value: GameSoundtrackValue): GameSou
 export const getWeatherLabelFromValue = (value: WeatherVariantValue): WeatherVariantLabel => (weatherValueMap[value]);
 
 export const getSoundEffectLabelFromValue = (value: SoundEffectValue): SoundEffectLabel => (soundEffectValueMap[value]);
+
+export const isRandomWeather = (weather: WeatherVariantValue): boolean => {
+    return weather === WeatherVariantValue.RandomNormal || weather === WeatherVariantValue.RandomRainy || weather === WeatherVariantValue.RandomSnowy;
+}

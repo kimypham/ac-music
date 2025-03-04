@@ -1,16 +1,17 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { createSearchParams, SetURLSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
-import { ISettings, LocalStorageKey } from '../../common';
+import { ISettings, isRandomWeather, LocalStorageKey, WeatherVariantValue } from '../../common';
 import { GameSoundtrackList, WeatherVariantList } from '../../common/constants';
 import { RadioInputGroup } from '../RadioInputGroup';
 import { VideoSettingsGroup } from '../VideoSettingsGroup';
 import './VideoSettings.css';
-import { getSettings } from './VideoSettings.service';
+import { getRandomWeatherVariantValue, getSettings } from './VideoSettings.service';
 
 export const VideoSettings = () => {
     const [searchParams]: [URLSearchParams, SetURLSearchParams] = useSearchParams();
 
     const [settings, setSettings] = useState<ISettings>(getSettings(searchParams));
+    const { gameSoundtrack, weatherVariant, gameTime }: ISettings = settings;
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,18 +24,42 @@ export const VideoSettings = () => {
         stateVariable: LocalStorageKey;
     };
 
+    const setRandomWeatherInSettings = () => {
+        const randomWeatherValue: WeatherVariantValue = getRandomWeatherVariantValue();
+        const newSettings: ISettings = { ...settings, [LocalStorageKey.WeatherVariant]: randomWeatherValue };
+        setSettings(newSettings);
+    };
+
+    useEffect(() => {
+        if (weatherVariant === WeatherVariantValue.Random) {
+            setRandomWeatherInSettings();
+
+            navigate({
+                search: createSearchParams({
+                    game: gameSoundtrack,
+                    time: `${gameTime}`,
+                    weather: WeatherVariantValue.Random,
+                    // rain: `${newSettings.rainSoundEffectOn}`,
+                    // thunder: `${newSettings.thunderSoundEffectOn}`
+                }).toString()
+            });
+        };
+    }, [weatherVariant]);
+
+
     const handleRadioOptionChange = ({ changeEvent, stateVariable }: IHandleRadioOptionChangeProps): void => {
         const isCheckboxChanged: boolean = stateVariable == LocalStorageKey.RainSoundEffectOn || stateVariable == LocalStorageKey.ThunderSoundEffectOn;
         const value: string | boolean = isCheckboxChanged ? changeEvent.target.checked : changeEvent.target.value;
 
         const newSettings: ISettings = { ...settings, [stateVariable]: value };
+        const { weatherVariant } = newSettings;
         setSettings(newSettings);
 
         navigate({
             search: createSearchParams({
-                game: newSettings.gameSoundtrack,
-                time: `${newSettings.gameTime}`,
-                weather: newSettings.weatherVariant,
+                game: gameSoundtrack,
+                time: `${gameTime}`,
+                weather: weatherVariant,
                 // rain: `${newSettings.rainSoundEffectOn}`,
                 // thunder: `${newSettings.thunderSoundEffectOn}`
             }).toString()
@@ -48,13 +73,14 @@ export const VideoSettings = () => {
 
     const handleDropdownOptionChange = ({ changeEvent, stateVariable }: IHandleDropdownOptionChangeProps): void => {
         const newSettings: ISettings = { ...settings, [stateVariable]: changeEvent.target.value };
+        const { gameSoundtrack, gameTime, weatherVariant } = newSettings;
         setSettings(newSettings);
 
         navigate({
             search: createSearchParams({
-                game: newSettings.gameSoundtrack,
-                time: `${newSettings.gameTime}`,
-                weather: newSettings.weatherVariant,
+                game: gameSoundtrack,
+                time: `${gameTime}`,
+                weather: weatherVariant,
                 // rain: `${newSettings.rainSoundEffectOn}`,
                 // thunder: `${newSettings.thunderSoundEffectOn}`
             }).toString()
@@ -67,7 +93,7 @@ export const VideoSettings = () => {
                 <RadioInputGroup
                     name={LocalStorageKey.GameSoundtrack}
                     values={GameSoundtrackList}
-                    selectedOption={settings.gameSoundtrack}
+                    selectedOption={gameSoundtrack}
                     onChange={(changeEvent) => handleRadioOptionChange({ changeEvent, stateVariable: LocalStorageKey.GameSoundtrack })}
                 />
             </VideoSettingsGroup>
@@ -76,13 +102,13 @@ export const VideoSettings = () => {
                 <RadioInputGroup
                     name={LocalStorageKey.WeatherVariant}
                     values={WeatherVariantList}
-                    selectedOption={settings.weatherVariant}
+                    selectedOption={isRandomWeather(weatherVariant) ? WeatherVariantValue.Random : weatherVariant}
                     onChange={(changeEvent) => handleRadioOptionChange({ changeEvent, stateVariable: LocalStorageKey.WeatherVariant })}
                 />
             </VideoSettingsGroup>
 
             <VideoSettingsGroup title='Change hour'>
-                <select name="gameTime" id="gameTime" defaultValue={settings.gameTime} onChange={(changeEvent) => handleDropdownOptionChange({ changeEvent, stateVariable: LocalStorageKey.GameTime })}>
+                <select name="gameTime" id="gameTime" defaultValue={gameTime} onChange={(changeEvent) => handleDropdownOptionChange({ changeEvent, stateVariable: LocalStorageKey.GameTime })}>
                     <option value="current">Use Current</option>
                     <option value="1AM">1am</option>
                     <option value="2AM">2am</option>
