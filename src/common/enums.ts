@@ -55,7 +55,10 @@ export enum WeatherVariantValue {
     Normal = 'normal',
     Rainy = 'rainy',
     Snowy = 'snowy',
-    Random = 'weatherVariantRandom'
+    Random = 'weatherVariantRandom',
+    RandomNormal = 'weatherVariantRandomNormal',
+    RandomRainy = 'weatherVariantRandomRainy',
+    RandomSnowy = 'weatherVariantRandomSnowy'
 };
 
 export enum WeatherVariantOptions {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { FormattedHour, GameSoundtrackList, GameSoundtrackValue, ISettings, NHVideoId, NLVideoId, OriginalVideoId, WeatherVariantOptionsList, WeatherVariantValue, WWCFVideoId } from '../../common';
-import { getHour, getSettingsFromLocalStorage } from '../../common/service';
+import { FormattedHour, GameSoundtrackList, GameSoundtrackValue, ISettings, NHVideoId, NLVideoId, OriginalVideoId, WeatherVariantValue, WWCFVideoId } from '../../common';
+import { getHour, getSettingsFromLocalStorage, isRandomWeather } from '../../common/service';
 import { GameSoundtrackOption, WeatherVariantOption } from '../../common/types';
 import { useTime } from '../../hooks';
 
@@ -16,11 +16,6 @@ export const Video = () => {
         return GameSoundtrackList[randomNumber] as GameSoundtrackOption;
     };
 
-    const getRandomWeather = (): WeatherVariantOption => {
-        const randomNumber: number = Math.floor(Math.random() * WeatherVariantOptionsList.length);
-        return WeatherVariantOptionsList[randomNumber] as WeatherVariantOption;
-    };
-
     const getVideoId = (soundtrack: GameSoundtrackValue, weather: WeatherVariantOption, hour: FormattedHour): string => {
         const videoIdMappings: Record<string, Record<FormattedHour, Record<WeatherVariantOption, string>>> = {
             [GameSoundtrackValue.Original]: OriginalVideoId,
@@ -31,9 +26,22 @@ export const Video = () => {
         return videoIdMappings[soundtrack][hour][weather]
     };
 
+    const mapRandomWeather = (weather: WeatherVariantValue): WeatherVariantOption => {
+        switch (weather) {
+            case WeatherVariantValue.RandomNormal:
+                return WeatherVariantValue.Normal;
+            case WeatherVariantValue.RandomRainy:
+                return WeatherVariantValue.Rainy;
+            case WeatherVariantValue.RandomSnowy:
+                return WeatherVariantValue.Snowy;
+            default:
+                return WeatherVariantValue.Normal;
+        };
+    };
+
     useEffect(() => {
         const selectedSoundtrack: GameSoundtrackOption = soundtrack === GameSoundtrackValue.Random ? getRandomSoundtrack() : soundtrack;
-        const selectedWeather: WeatherVariantOption = weather === WeatherVariantValue.Random ? getRandomWeather() : weather === WeatherVariantValue.Real ? WeatherVariantValue.Normal : weather
+        const selectedWeather: WeatherVariantOption = isRandomWeather(weather) ? mapRandomWeather(weather) : weather === WeatherVariantValue.Real ? WeatherVariantValue.Normal : weather;
         setVideoId(getVideoId(selectedSoundtrack, selectedWeather, hour));
     }, [soundtrack, weather, hour]);
 

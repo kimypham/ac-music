@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { FormattedHour, GameSoundtrackLabel, GameSoundtrackValue } from '../../common';
-import { getHour, getSettingsFromLocalStorage, getSoundtrackLabelFromValue } from '../../common/service';
+import { FormattedHour, GameSoundtrackLabel, ISettings, WeatherVariantLabel } from '../../common';
+import { getHour, getSettingsFromLocalStorage, getSoundtrackLabelFromValue, getWeatherLabelFromValue } from '../../common/service';
 import { useTime } from '../../hooks';
 
 export const MainText = () => {
@@ -8,8 +8,16 @@ export const MainText = () => {
     const timeString: string = time.toLocaleTimeString(['en-AU'], { timeStyle: 'short' }).split(' ').join('');
     const hour: FormattedHour = getHour(time);
 
-    const soundtrackValue: GameSoundtrackValue = getSettingsFromLocalStorage().gameSoundtrack;
-    const soundtrack: GameSoundtrackLabel = getSoundtrackLabelFromValue(soundtrackValue);
+    const { gameSoundtrack, weatherVariant }: ISettings = getSettingsFromLocalStorage();
+    const soundtrack: GameSoundtrackLabel = getSoundtrackLabelFromValue(gameSoundtrack);
+    const weather: WeatherVariantLabel = getWeatherLabelFromValue(weatherVariant)
+
+    const getWeatherString = (weatherLabel: WeatherVariantLabel): string => {
+        if (weatherLabel === WeatherVariantLabel.Normal || weatherLabel === WeatherVariantLabel.Real) {
+            return '';
+        };
+        return `(${weatherLabel})`;
+    };
 
 
     const HighlightText = ({ children }: PropsWithChildren) => {
@@ -27,7 +35,7 @@ export const MainText = () => {
     return (
         <div className="font-extrabold leading-loose text-[20px] lg:text-[32px]">
             It's currently <HighlightText>{timeString}</HighlightText>!<br />
-            Now playing: <HighlightText>{hour} AC: {soundtrack} Soundtrack</HighlightText>
+            Now playing: <HighlightText>{hour} AC: {soundtrack} Soundtrack {getWeatherString(weather)}</HighlightText>
         </div>
     )
 }

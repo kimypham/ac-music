@@ -18,12 +18,6 @@ export const WeatherVariantList = [
     WeatherVariantValue.Random
 ];
 
-export const WeatherVariantOptionsList = [
-    WeatherVariantValue.Normal,
-    WeatherVariantValue.Rainy,
-    WeatherVariantValue.Snowy
-];
-
 export const soundtrackValueMap: Record<GameSoundtrackValue, GameSoundtrackLabel> = {
     [GameSoundtrackValue.Original]: GameSoundtrackLabel.Original,
     [GameSoundtrackValue.WWCF]: GameSoundtrackLabel.WWCF,
@@ -37,7 +31,10 @@ export const weatherValueMap: Record<WeatherVariantValue, WeatherVariantLabel> =
     [WeatherVariantValue.Normal]: WeatherVariantLabel.Normal,
     [WeatherVariantValue.Rainy]: WeatherVariantLabel.Rainy,
     [WeatherVariantValue.Snowy]: WeatherVariantLabel.Snowy,
-    [WeatherVariantValue.Random]: WeatherVariantLabel.Random
+    [WeatherVariantValue.Random]: WeatherVariantLabel.Random,
+    [WeatherVariantValue.RandomNormal]: WeatherVariantLabel.Normal,
+    [WeatherVariantValue.RandomRainy]: WeatherVariantLabel.Rainy,
+    [WeatherVariantValue.RandomSnowy]: WeatherVariantLabel.Snowy,
 };
 
 export const soundEffectValueMap: Record<SoundEffectValue, SoundEffectLabel> = {
