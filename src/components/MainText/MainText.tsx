@@ -1,10 +1,14 @@
 import { PropsWithChildren } from 'react';
-import { FormattedHour, GameSoundtrackLabel, ISettings, WeatherVariantLabel } from '../../common';
+import { FormattedHour, GameSoundtrackLabel, ISettings, WeatherVariantLabel, WeatherVariantValue } from '../../common';
 import { getHour, getSettingsFromLocalStorage, getSoundtrackLabelFromValue, getWeatherLabelFromValue } from '../../common/service';
-import { useTime } from '../../hooks';
 
-export const MainText = () => {
-    const time: Date = useTime();
+interface IMainTextProps {
+    time: Date,
+    weatherString: string | undefined,
+    chosenRealWeather: WeatherVariantValue | undefined
+};
+
+export const MainText = ({ time, weatherString, chosenRealWeather }: IMainTextProps) => {
     const timeString: string = time.toLocaleTimeString(['en-AU'], { timeStyle: 'short' }).split(' ').join('');
     const hour: FormattedHour = getHour(time);
 
@@ -12,8 +16,14 @@ export const MainText = () => {
     const soundtrack: GameSoundtrackLabel = getSoundtrackLabelFromValue(gameSoundtrack);
     const weather: WeatherVariantLabel = getWeatherLabelFromValue(weatherVariant)
 
-    const getWeatherString = (weatherLabel: WeatherVariantLabel): string => {
-        if (weatherLabel === WeatherVariantLabel.Normal || weatherLabel === WeatherVariantLabel.Real) {
+    const getWeatherString = (weatherLabel: WeatherVariantLabel, chosenRealWeather: WeatherVariantValue | undefined): string => {
+        if (weatherLabel === WeatherVariantLabel.Real) {
+            if (!chosenRealWeather || chosenRealWeather === WeatherVariantValue.Normal) {
+                return '';
+            } else {
+                return `(${getWeatherLabelFromValue(chosenRealWeather)})`;
+            };
+        } else if (weatherLabel === WeatherVariantLabel.Normal) {
             return '';
         };
         return `(${weatherLabel})`;
@@ -24,18 +34,12 @@ export const MainText = () => {
         return <p className="text-lm-text-blue dark:text-dm-text-green inline">
             {children}
         </p>
-    }
+    };
 
-    // return (
-    //     <p className="font-extrabold leading-loose">
-    //         It's currently <HighlightText>{timeString}</HighlightText> and <HighlightText>cloudy</HighlightText>!<br />
-    //         Now playing: <HighlightText>{hour} AC: {soundtrack} Soundtrack</HighlightText>
-    //     </p>
-    // )
     return (
         <div className="font-extrabold leading-loose text-[20px] lg:text-[32px]">
-            It's currently <HighlightText>{timeString}</HighlightText>!<br />
-            Now playing: <HighlightText>{hour} AC: {soundtrack} Soundtrack {getWeatherString(weather)}</HighlightText>
+            It's currently <HighlightText>{timeString}</HighlightText>{weatherString && <> and <HighlightText>{weatherString}</HighlightText></>}!<br />
+            Now playing: <HighlightText>{hour} AC: {soundtrack} Soundtrack {getWeatherString(weather, chosenRealWeather)}</HighlightText>
         </div>
-    )
-}
+    );
+};

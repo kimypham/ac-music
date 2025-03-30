@@ -10,6 +10,13 @@ export const GameSoundtrackList = [
     GameSoundtrackValue.Random
 ];
 
+export const GameSoundtrackListExcludingRandom = [
+    GameSoundtrackValue.Original,
+    GameSoundtrackValue.WWCF,
+    GameSoundtrackValue.NL,
+    GameSoundtrackValue.NH
+];
+
 export const WeatherVariantList = [
     WeatherVariantValue.Real,
     WeatherVariantValue.Normal,
@@ -543,3 +550,45 @@ export const NHVideoId: Record<FormattedHour, Record<WeatherVariantOption, strin
 };
 
 export const WEATHER_API_BASE_URL: string = 'https://api.open-meteo.com/v1/forecast?current=weather_code&timezone=auto&forecast_days=1';
+
+export const weatherCodeMap: Record<number, string> = {
+    0: "clear",
+    1: "clear",
+    2: "cloudy",
+    3: "overcast",
+    45: "foggy",
+    48: "foggy",
+    51: "drizzling",
+    53: "drizzling",
+    55: "drizzling",
+    56: "drizzling",
+    57: "drizzling",
+    61: "raining",
+    63: "raining",
+    65: "raining",
+    66: "raining",
+    67: "raining",
+    71: "snowing",
+    73: "snowing",
+    75: "snowing",
+    77: "snowing",
+    80: "raining",
+    81: "raining",
+    82: "raining",
+    85: "snowing",
+    86: "snowing",
+    95: "thunderstorming",
+    96: "thunderstorming",
+    99: "thunderstorming",
+};
+
+export const weatherSelectedMap: Record<string, WeatherVariantValue> = {
+    "clear": WeatherVariantValue.Normal,
+    "cloudy": WeatherVariantValue.Normal,
+    "overcast": WeatherVariantValue.Normal,
+    "foggy": WeatherVariantValue.Normal,
+    "drizzling": WeatherVariantValue.Rainy,
+    "raining": WeatherVariantValue.Rainy,
+    "snowing": WeatherVariantValue.Snowy,
+    "thunderstorming": WeatherVariantValue.Rainy
+};

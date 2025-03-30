@@ -1,4 +1,4 @@
-import { initialSettings, soundEffectValueMap, soundtrackValueMap, weatherValueMap } from './constants';
+import { initialSettings, soundEffectValueMap, soundtrackValueMap, weatherCodeMap, weatherSelectedMap, weatherValueMap } from './constants';
 import { FormattedHour, GameSoundtrackLabel, GameSoundtrackValue, GameTime, LocalStorageKey, SoundEffectLabel, SoundEffectValue, WeatherVariantLabel, WeatherVariantValue } from './enums';
 import { ISettings } from './interfaces';
 
@@ -31,4 +31,12 @@ export const getSoundEffectLabelFromValue = (value: SoundEffectValue): SoundEffe
 
 export const isRandomWeather = (weather: WeatherVariantValue): boolean => {
     return weather === WeatherVariantValue.RandomNormal || weather === WeatherVariantValue.RandomRainy || weather === WeatherVariantValue.RandomSnowy;
-}
+};
+
+export const mapWeatherCode = (weatherCode: number): string => {
+    return weatherCodeMap[weatherCode];
+};
+
+export const mapWeatherCondition = (weatherCondition: string): WeatherVariantValue => {
+    return weatherSelectedMap[weatherCondition];
+};

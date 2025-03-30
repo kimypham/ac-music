@@ -18,7 +18,6 @@ export const VideoSettings = () => {
         localStorage.setItem(LocalStorageKey.Object, JSON.stringify(settings));
     }, [settings]);
 
-    localStorage.setItem(LocalStorageKey.Object, JSON.stringify(getSettings(searchParams)));
     interface IHandleRadioOptionChangeProps {
         changeEvent: ChangeEvent<HTMLInputElement>;
         stateVariable: LocalStorageKey;
