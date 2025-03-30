@@ -541,3 +541,5 @@ export const NHVideoId: Record<FormattedHour, Record<WeatherVariantOption, strin
         snowy: 'nkVFLr250OU' // og soundtrack
     }
 };
+
+export const WEATHER_API_BASE_URL: string = 'https://api.open-meteo.com/v1/forecast?current=weather_code&timezone=auto&forecast_days=1';
