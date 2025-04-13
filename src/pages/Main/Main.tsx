@@ -1,10 +1,11 @@
-import { mapWeatherCode, mapWeatherCondition, WeatherVariantValue } from '../../common';
+import { IWeatherProps, mapWeatherCode, mapWeatherCondition, WeatherVariantValue } from '../../common';
 import { MainText, Video, VideoSettings } from '../../components';
-import { useTime, useWeather } from '../../hooks';
+import { useLocation, useTime, useWeather } from '../../hooks';
 
 export const Main = () => {
     const time: Date = useTime();
-    const weatherResponse = useWeather(time);
+    const location: IWeatherProps | undefined = useLocation();
+    const weatherResponse = useWeather(time, location);
     const weatherString: string | undefined = weatherResponse ? mapWeatherCode(weatherResponse.weatherCode) : undefined;
     const chosenRealWeather: WeatherVariantValue | undefined = weatherString ? mapWeatherCondition(weatherString) : undefined;
 
@@ -20,7 +21,7 @@ export const Main = () => {
                         {/* <VideoControls /> */}
                     </div>
                     <div className='px-[24px] pb-[24px] lg:pb-0 w-full lg:w-auto overflow-hidden'>
-                        <VideoSettings />
+                        <VideoSettings location={location} />
                     </div>
                 </div>
             </div>
