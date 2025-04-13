@@ -1,50 +1,48 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { createSearchParams, SetURLSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
-import { ISettings, isRandomWeather, LocalStorageKey, WeatherVariantValue } from '../../common';
+import { GameSoundtrackValue, ISettings, isRandomWeather, IWeatherProps, LocalStorageKey, WeatherVariantValue } from '../../common';
 import { GameSoundtrackList, WeatherVariantList } from '../../common/constants';
 import { RadioInputGroup } from '../RadioInputGroup';
 import { VideoSettingsGroup } from '../VideoSettingsGroup';
 import './VideoSettings.css';
 import { getRandomWeatherVariantValue, getSettings } from './VideoSettings.service';
 
-export const VideoSettings = () => {
+interface IVideoSettingsProps {
+    location: IWeatherProps | undefined
+};
+
+export const VideoSettings = ({ location }: IVideoSettingsProps) => {
     const [searchParams]: [URLSearchParams, SetURLSearchParams] = useSearchParams();
+    const navigate = useNavigate();
 
     const [settings, setSettings] = useState<ISettings>(getSettings(searchParams));
     const { gameSoundtrack, weatherVariant, gameTime }: ISettings = settings;
-    const navigate = useNavigate();
 
     useEffect(() => {
         localStorage.setItem(LocalStorageKey.Object, JSON.stringify(settings));
     }, [settings]);
 
+    const setWeatherVariant = (selectedWeather: WeatherVariantValue) => {
+        const newSettings: ISettings = { ...settings, [LocalStorageKey.WeatherVariant]: selectedWeather };
+        setSettings(newSettings);
+    };
+
+    const navigateWithSettings = ({ game, time, weather }: { game: GameSoundtrackValue, time: string, weather: WeatherVariantValue }) => {
+        navigate({
+            search: createSearchParams({
+                game,
+                time,
+                weather,
+                // rain: `${newSettings.rainSoundEffectOn}`,
+                // thunder: `${newSettings.thunderSoundEffectOn}`
+            }).toString()
+        });
+    };
+
     interface IHandleRadioOptionChangeProps {
         changeEvent: ChangeEvent<HTMLInputElement>;
         stateVariable: LocalStorageKey;
     };
-
-    const setRandomWeatherInSettings = () => {
-        const randomWeatherValue: WeatherVariantValue = getRandomWeatherVariantValue();
-        const newSettings: ISettings = { ...settings, [LocalStorageKey.WeatherVariant]: randomWeatherValue };
-        setSettings(newSettings);
-    };
-
-    useEffect(() => {
-        if (weatherVariant === WeatherVariantValue.Random) {
-            setRandomWeatherInSettings();
-
-            navigate({
-                search: createSearchParams({
-                    game: gameSoundtrack,
-                    time: `${gameTime}`,
-                    weather: WeatherVariantValue.Random,
-                    // rain: `${newSettings.rainSoundEffectOn}`,
-                    // thunder: `${newSettings.thunderSoundEffectOn}`
-                }).toString()
-            });
-        };
-    }, [weatherVariant]);
-
 
     const handleRadioOptionChange = ({ changeEvent, stateVariable }: IHandleRadioOptionChangeProps): void => {
         const isCheckboxChanged: boolean = stateVariable == LocalStorageKey.RainSoundEffectOn || stateVariable == LocalStorageKey.ThunderSoundEffectOn;
@@ -54,14 +52,10 @@ export const VideoSettings = () => {
         const { weatherVariant } = newSettings;
         setSettings(newSettings);
 
-        navigate({
-            search: createSearchParams({
-                game: gameSoundtrack,
-                time: `${gameTime}`,
-                weather: weatherVariant,
-                // rain: `${newSettings.rainSoundEffectOn}`,
-                // thunder: `${newSettings.thunderSoundEffectOn}`
-            }).toString()
+        navigateWithSettings({
+            game: gameSoundtrack,
+            time: `${gameTime}`,
+            weather: weatherVariant
         });
     };
 
@@ -75,16 +69,38 @@ export const VideoSettings = () => {
         const { gameSoundtrack, gameTime, weatherVariant } = newSettings;
         setSettings(newSettings);
 
-        navigate({
-            search: createSearchParams({
-                game: gameSoundtrack,
-                time: `${gameTime}`,
-                weather: weatherVariant,
-                // rain: `${newSettings.rainSoundEffectOn}`,
-                // thunder: `${newSettings.thunderSoundEffectOn}`
-            }).toString()
+        navigateWithSettings({
+            game: gameSoundtrack,
+            time: `${gameTime}`,
+            weather: weatherVariant
         });
     };
+
+    useEffect(() => {
+        if (weatherVariant === WeatherVariantValue.Random) {
+            const randomWeatherValue: WeatherVariantValue = getRandomWeatherVariantValue();
+            setWeatherVariant(randomWeatherValue);
+
+            navigateWithSettings({
+                game: gameSoundtrack,
+                time: `${gameTime}`,
+                weather: WeatherVariantValue.Random
+            });
+        };
+    }, [weatherVariant]);
+
+    useEffect(() => {
+        if (!location && weatherVariant === WeatherVariantValue.Real) {
+            setWeatherVariant(WeatherVariantValue.Normal);
+
+            navigateWithSettings({
+                game: gameSoundtrack,
+                time: `${gameTime}`,
+                weather: WeatherVariantValue.Normal
+            });
+        }
+
+    }, [location]);
 
     return (
         <div className='flex-col text-[16px] lg:text-[20px]'>
@@ -103,6 +119,7 @@ export const VideoSettings = () => {
                     values={WeatherVariantList}
                     selectedOption={isRandomWeather(weatherVariant) ? WeatherVariantValue.Random : weatherVariant}
                     onChange={(changeEvent) => handleRadioOptionChange({ changeEvent, stateVariable: LocalStorageKey.WeatherVariant })}
+                    location={location}
                 />
             </VideoSettingsGroup>
 

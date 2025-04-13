@@ -1,5 +1,6 @@
 /* Styled radio button based off code by A Haworth from https://stackoverflow.com/questions/73572206/how-to-style-an-html-radio-input-element-such-that-the-radio-button-is-absent */
 /* Styled checkbox toggle based off code from https://www.w3schools.com/howto/howto_css_switch.asp */
+/* Tooltip based off code from https://www.w3schools.com/css/css_tooltip.asp */
 
 input[type="radio"],
 input[type="checkbox"] {
@@ -80,6 +81,37 @@ input[type="checkbox"]:checked+.toggleCircle:before {
     transform: translateX(30px);
 }
 
+.disabled,
+.disabled:hover {
+    cursor: default;
+    background-color: #F3EDE8;
+    color: #C3B7A8;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: var(--lm-brown);
+    color: var(--lm-white);
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
 @media (prefers-color-scheme: dark) {
 
     input[type="radio"]:checked+label,
@@ -116,4 +148,14 @@ input[type="checkbox"]:checked+.toggleCircle:before {
         background-color: #c2ebe9;
     }
 
+    .disabled,
+    .disabled:hover {
+        background-color: #0b343a;
+        color: #415f64;
+    }
+
+    .tooltip .tooltiptext {
+        background-color: var(--dm-bg-dark-green);
+        color: var(--dm-white);
+    }
 }

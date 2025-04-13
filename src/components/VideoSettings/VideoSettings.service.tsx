@@ -35,4 +35,4 @@ export const getRandomWeatherVariantValue = (): WeatherVariantValue => {
     const randomWeatherList: WeatherVariantValue[] = [WeatherVariantValue.RandomNormal, WeatherVariantValue.RandomRainy, WeatherVariantValue.RandomSnowy];
     const randomNumber: number = Math.floor(Math.random() * randomWeatherList.length);
     return randomWeatherList[randomNumber];
-}
+};
