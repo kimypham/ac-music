@@ -1,18 +1,37 @@
 export const About = () => {
     return (
-        <div className="flex px-[96px] font-open-sans text-[32px] text-lm-brown text-left dark:text-dm-white self-center my-auto w-full h-full">
-            <div className="flex-col bg-[#FFF9F5] dark:bg-dm-bg-green w-full h-full rounded-[30px]">
-                <h1 className="text-[32px] text-center py-4 font-bold">About</h1>
-                <div className='flex-col text-[20px] px-8'>
-                    <p>Welcome to AC Hourly Music! 🌱<br /><br />
-                        Enjoy the calming and nostalgic tunes of AC without ever having to pick up your console. AC Hourly Music lets you listen to the game's hourly soundtracks based on your real time of day! Whether you're working, studying, or just relaxing, these cozy tunes will bring the magic of the game to your everyday life. Happy listening!</p><br />
+        <div className="flex font-bold font-open-sans text-lm-brown text-center dark:text-dm-white self-center my-auto w-full h-full">
+            <div className="bg-[#FFF9F5] dark:bg-dm-bg-green w-full h-full lg:rounded-[30px] content-center place-content-evenly">
+                <div className='mt-[24px] mx-[12px]'>
+                    <h1 className="font-extrabold leading-loose text-[20px] lg:text-[32px]">About</h1>
+                </div>
+                <div className="place-content-evenly text-left mb-[24px] lg:mx-[24px] px-[24px] font-normal text-[16px] lg:text-[20px]">
+                    <p>
+                        Welcome to AC Hourly Music! 🌱<br />
+                        Listen to soundtracks from the game series 'Animal Crossing' based off your current time and weather conditions.<br />
+                    </p>
+                    <br />
 
                     <h2 className="text-[24px] pb-4 font-bold">Features</h2>
-                    <p>⏰ <b>Real time hourly tracks</b><br />
-                        Listen to each unique song for every hour of the day, just like in the games!</p><br />
+                    <p>
+                        <b>🎮 Choose your favourite game soundtrack</b><br />
+                        Switch between iconic soundtracks from across the years of the game series. Updated whenever a new game comes out.
+                    </p>
+                    <br />
 
-                    <p>🎮 <b>Choose your favourite soundtrack</b><br />
-                        Switch between iconic soundtracks from across the years of the game series</p><br />
+                    <p>
+                        <b>⏰ Real time hourly tracks</b><br />
+                        Each hour plays a different song, just like in the games! (So that's 24 possible tracks to listen to in a day!)<br />
+                        Or if you prefer, you can also choose specific times to listen to as well.
+                    </p>
+                    <br />
+
+                    <p>
+                        <b>🌦️ Real time weather tracks</b><br />
+                        Depending on your real weather, the tracks change too!<br />
+                        Or if you prefer, you can also choose to stick to a specific weather variation to listen to as well.
+                    </p>
+                    <br />
                 </div>
             </div>
         </div>
