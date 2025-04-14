@@ -5,8 +5,8 @@ AC Hourly Music is a cozy web app that plays soundtracks from game series 'Anima
 
 Live demo! ➡️ https://kimypham.github.io/ac-music
 
-![Demo light](https://kimypham.github.io/ac-music/public/demo-light.png)
-![Demo dark](https://kimypham.github.io/ac-music/public/demo-dark.png)
+![Demo light](https://github.com/kimypham/ac-music/blob/main/public/demo-light.png)
+![Demo dark](https://kimypham.github.io/ac-music/blob/main/public/demo-dark.png)
 </div>
 
 ## ✨ Features
