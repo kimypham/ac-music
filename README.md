@@ -1,30 +1,49 @@
-# React + TypeScript + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# AC Hourly Music 🌱
+AC Hourly Music is a cozy web app that plays soundtracks from game series 'Animal Crossing' based on your current time and weather conditions — bringing a little bit of island life to your day. 🍀🐶🐱
 
-Currently, two official plugins are available:
+Live demo! ➡️ https://kimypham.github.io/ac-music
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Demo light](https://kimypham.github.io/ac-music/public/demo-light.png)
+![Demo dark](https://kimypham.github.io/ac-music/public/demo-dark.png)
+</div>
 
-## Expanding the ESLint configuration
+## ✨ Features
+- 👾 Choose from 4 available game soundtracks
+- ⏰ Play music according to the current hour, or choose specific hours to listen to instead (24 different hourly tracks for each game!)
+- 🌦️ Play music according to the current weather condition, or choose specific weather variants to listen to instead (3 different variants!)
+- 📱 Responsive design for desktop and mobile and dark/light mode
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🛠️ Built With
 
-- Configure the top-level `parserOptions` property like this:
+- ⚛️ [React](https://reactjs.org/)
+- 🧠 [TypeScript](https://www.typescriptlang.org/)
+- ⚡ [Vite](https://vitejs.dev/) – Lightning-fast build tool
+- 🎨 [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework
+- 🔗 [React Router](https://reactrouter.com/) – Declarative routing
+- 🌐 [Axios](https://axios-http.com/) – HTTP client for data fetching
+- 🚀 [GitHub Pages](https://pages.github.com/) – For deployment
+- 🧹 [ESLint](https://eslint.org/) – Linting and code quality
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## 🚀 Getting Started
+1. Clone the repo:
+```
+git clone https://github.com/your-username/ac-music.git
+cd ac-music
+```
+2. Install dependencies:
+```
+yarn install
+```
+3. Run the app locally:
+```
+yarn dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Bug / Feature Request
+
+Found a bug or want to request a new feature? Tell me about it [here](https://github.com/kimypham/ac-music/issues/new)!
+
+## Acknowledgements
+Animal Crossing is copyrighted and is a trademark of Nintendo. I do not own any music or sounds used.
