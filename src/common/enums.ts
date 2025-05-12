@@ -68,7 +68,7 @@ export enum WeatherVariantOptions {
 };
 
 export enum WeatherVariantLabel {
-    Real = 'Real',
+    Real = 'Live',
     Normal = 'Normal',
     Rainy = 'Rainy',
     Snowy = 'Snowy',

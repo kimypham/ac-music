@@ -17,7 +17,9 @@ export const useWeather = (time: Date, location: IWeatherProps | undefined): IWe
         if (weather === undefined || (time.getSeconds() === 0 && time.getMinutes() === 0)) {
             fetch();
         };
-    }, [time]);
+        // console.log("location", location);
+        // console.log("time", time);
+    }, [location, time]);
 
     return weather;
 };

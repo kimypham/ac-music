@@ -1,14 +1,14 @@
-import { useState } from 'react';
 import { IWeatherProps } from '../common';
 
-export const useLocation = (): IWeatherProps | undefined => {
-    const [location, setLocation] = useState<IWeatherProps | undefined>();
+export const getLocation = (): IWeatherProps | undefined => {
+    let location: IWeatherProps | undefined = undefined;
 
     const getLocationSuccess = (position: any) => {
-        setLocation({
+        location = {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
-        });
+        };
+        console.log("location", location);
     };
 
     const getLocationError = () => {
@@ -19,5 +19,6 @@ export const useLocation = (): IWeatherProps | undefined => {
         navigator.geolocation.getCurrentPosition(getLocationSuccess, getLocationError);
     };
 
+    
     return location;
 };

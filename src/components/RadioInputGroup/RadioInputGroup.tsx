@@ -19,14 +19,14 @@ export const RadioInputGroup = ({ name, values, selectedOption, onChange, locati
         <>
             {values.map((value) => {
                 const label: GameSoundtrackLabel | WeatherVariantLabel = isGameSoundtrackValue(value) ? getSoundtrackLabelFromValue(value) : getWeatherLabelFromValue(value);
-                const shouldBeDisabled: boolean = label === WeatherVariantLabel.Real && !location;
+                const shouldBeDisabled: boolean = false;
 
                 return (
                     <Fragment key={value}>
                         <input type='radio' name={name} id={value} value={value} checked={selectedOption == value} onChange={onChange} disabled={shouldBeDisabled} />
                         <label role='radio' className={shouldBeDisabled ? 'radio tooltip disabled' : 'radio tooltip'} htmlFor={value}>
                             {label}
-                            {shouldBeDisabled && <span className="tooltiptext font-normal text-[10px]">To play soundtracks based on real weather conditions, please enable location.</span>}
+                            {shouldBeDisabled && <span className="tooltiptext font-normal text-[10px]">To play soundtracks based on real/live weather conditions, please enable location.</span>}
                         </label>
                     </Fragment>
                 );

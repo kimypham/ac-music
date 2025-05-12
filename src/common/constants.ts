@@ -51,7 +51,7 @@ export const soundEffectValueMap: Record<SoundEffectValue, SoundEffectLabel> = {
 
 export const initialSettings: ISettings = {
     gameSoundtrack: GameSoundtrackValue.NH,
-    weatherVariant: WeatherVariantValue.Real,
+    weatherVariant: WeatherVariantValue.Normal,
     rainSoundEffectOn: false,
     thunderSoundEffectOn: false,
     gameTime: GameTime.Current

@@ -1,14 +1,25 @@
-import { IWeatherProps, mapWeatherCode, mapWeatherCondition, WeatherVariantValue } from '../../common';
+import { useEffect, useMemo, useState } from 'react';
+import { getSettingsFromLocalStorage, IWeatherProps, mapWeatherCode, mapWeatherCondition, WeatherVariantValue } from '../../common';
 import { MainText, Video, VideoSettings } from '../../components';
-import { useLocation, useTime, useWeather } from '../../hooks';
+import { getLocation, useTime, useWeather } from '../../hooks';
 
 export const Main = () => {
-    const time: Date = useTime();
-    const location: IWeatherProps | undefined = useLocation();
-    const weatherResponse = useWeather(time, location);
-    const weatherString: string | undefined = weatherResponse ? mapWeatherCode(weatherResponse.weatherCode) : undefined;
-    const chosenRealWeather: WeatherVariantValue | undefined = weatherString ? mapWeatherCondition(weatherString) : undefined;
+    const [location, setLocation] = useState<IWeatherProps | undefined>();
+    const [weatherString, setWeatherString] = useState<string | undefined>();
+    const [chosenRealWeather, setChosenRealWeather] = useState<WeatherVariantValue | undefined>();
 
+    const time: Date = useTime();
+    const weather = useWeather(time, location);
+    const weatherVariant: WeatherVariantValue = useMemo(() => getSettingsFromLocalStorage().weatherVariant, [window.location.href]);
+
+    useEffect(() => {
+        setLocation(weatherVariant === WeatherVariantValue.Real ? getLocation() : undefined);
+        setWeatherString(weather ? mapWeatherCode(weather.weatherCode) : undefined);
+        setChosenRealWeather(weatherString ? mapWeatherCondition(weatherString) : undefined);
+    }, [weatherVariant]);
+
+    // console.log("location", location);
+    
     return (
         <div className="flex font-bold font-open-sans text-lm-brown text-center dark:text-dm-white self-center my-auto w-full h-full">
             <div className="bg-[#FFF9F5] dark:bg-dm-bg-green w-full h-full lg:rounded-[30px] content-center place-content-evenly">
