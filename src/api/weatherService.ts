@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
-import { IWeatherApiResponse, IWeatherProps, WEATHER_API_BASE_URL } from '../common';
+import { IWeatherApiResponse, IWeatherLocation, WEATHER_API_BASE_URL } from '../common';
 
-export const fetchWeather = async ({ latitude, longitude }: IWeatherProps): Promise<IWeatherApiResponse> => {
+export const fetchWeather = async ({ latitude, longitude }: IWeatherLocation): Promise<IWeatherApiResponse> => {
     try {
         const response: AxiosResponse = await axios.get<IWeatherApiResponse>(`${WEATHER_API_BASE_URL}&latitude=${latitude}&longitude=${longitude}`);
         return response.data;

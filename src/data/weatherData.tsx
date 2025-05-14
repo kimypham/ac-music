@@ -1,7 +1,7 @@
 import { fetchWeather } from '../api';
-import { IWeatherApiResponse, IWeatherProps, IWeatherResponse } from '../common';
+import { IWeatherApiResponse, IWeatherLocation, IWeatherResponse } from '../common';
 
-export const getWeather = async ({ latitude, longitude }: IWeatherProps): Promise<IWeatherResponse> => {
+export const getWeather = async ({ latitude, longitude }: IWeatherLocation): Promise<IWeatherResponse> => {
     try {
         const response: IWeatherApiResponse = await fetchWeather({ latitude, longitude });
         return {

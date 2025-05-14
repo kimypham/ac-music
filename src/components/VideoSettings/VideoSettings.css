@@ -82,7 +82,8 @@ input[type="checkbox"]:checked+.toggleCircle:before {
 }
 
 .disabled,
-.disabled:hover {
+.disabled:hover,
+.disabled:active {
     cursor: default;
     background-color: #F3EDE8;
     color: #C3B7A8;
@@ -149,9 +150,10 @@ input[type="checkbox"]:checked+.toggleCircle:before {
     }
 
     .disabled,
-    .disabled:hover {
-        background-color: #0b343a;
-        color: #415f64;
+    .disabled:hover,
+    .disabled:checked {
+        background-color: #0b343a !important;
+        color: #415f64 !important;
     }
 
     .tooltip .tooltiptext {

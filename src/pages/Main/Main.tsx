@@ -1,24 +1,27 @@
 import { useEffect, useMemo, useState } from 'react';
-import { getSettingsFromLocalStorage, IWeatherProps, mapWeatherCode, mapWeatherCondition, WeatherVariantValue } from '../../common';
+import { getSettingsFromLocalStorage, IWeatherLocation, IWeatherProps, mapWeatherCode, mapWeatherCondition, WeatherVariantValue } from '../../common';
 import { MainText, Video, VideoSettings } from '../../components';
-import { getLocation, useTime, useWeather } from '../../hooks';
+import { useLocation, useTime, useWeather } from '../../hooks';
 
 export const Main = () => {
-    const [location, setLocation] = useState<IWeatherProps | undefined>();
     const [weatherString, setWeatherString] = useState<string | undefined>();
     const [chosenRealWeather, setChosenRealWeather] = useState<WeatherVariantValue | undefined>();
 
     const time: Date = useTime();
-    const weather = useWeather(time, location);
     const weatherVariant: WeatherVariantValue = useMemo(() => getSettingsFromLocalStorage().weatherVariant, [window.location.href]);
+    console.log("weatherVariant", weatherVariant);
+    const locationData: IWeatherProps | undefined = useLocation(weatherVariant === WeatherVariantValue.Real);
+    const error: boolean = locationData?.error ?? false;
+    const location: IWeatherLocation | undefined = error ? undefined : locationData?.location;
 
+    const weather = useWeather(time, location);
+    
     useEffect(() => {
-        setLocation(weatherVariant === WeatherVariantValue.Real ? getLocation() : undefined);
         setWeatherString(weather ? mapWeatherCode(weather.weatherCode) : undefined);
         setChosenRealWeather(weatherString ? mapWeatherCondition(weatherString) : undefined);
     }, [weatherVariant]);
 
-    // console.log("location", location);
+    console.log("location2", location, error, weather, weatherString, chosenRealWeather);
     
     return (
         <div className="flex font-bold font-open-sans text-lm-brown text-center dark:text-dm-white self-center my-auto w-full h-full">
@@ -32,7 +35,7 @@ export const Main = () => {
                         {/* <VideoControls /> */}
                     </div>
                     <div className='px-[24px] pb-[24px] lg:pb-0 w-full lg:w-auto overflow-hidden'>
-                        <VideoSettings location={location} />
+                        <VideoSettings location={location} error={error}/>
                     </div>
                 </div>
             </div>

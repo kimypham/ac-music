@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { IWeatherProps, IWeatherResponse } from '../common';
+import { IWeatherLocation, IWeatherResponse } from '../common';
 import { getWeather } from '../data';
 
-export const useWeather = (time: Date, location: IWeatherProps | undefined): IWeatherResponse | undefined => {
+export const useWeather = (time: Date, location: IWeatherLocation | undefined): IWeatherResponse | undefined => {
     const [weather, setWeather] = useState<IWeatherResponse>();
 
     useEffect(() => {

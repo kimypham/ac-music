@@ -32,7 +32,12 @@ export interface IWeatherResponse {
     weatherCode: number
 };
 
-export interface IWeatherProps {
+export interface IWeatherLocation {
     latitude: number,
     longitude: number
+}
+
+export interface IWeatherProps {
+    location: IWeatherLocation | undefined,
+    error: boolean
 };

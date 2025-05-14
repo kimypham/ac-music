@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { createSearchParams, SetURLSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
-import { GameSoundtrackValue, ISettings, isRandomWeather, IWeatherProps, LocalStorageKey, WeatherVariantValue } from '../../common';
+import { GameSoundtrackValue, ISettings, isRandomWeather, IWeatherLocation, LocalStorageKey, WeatherVariantValue } from '../../common';
 import { GameSoundtrackList, WeatherVariantList } from '../../common/constants';
 import { RadioInputGroup } from '../RadioInputGroup';
 import { VideoSettingsGroup } from '../VideoSettingsGroup';
@@ -8,10 +8,11 @@ import './VideoSettings.css';
 import { getRandomWeatherVariantValue, getSettings } from './VideoSettings.service';
 
 interface IVideoSettingsProps {
-    location: IWeatherProps | undefined
+    location: IWeatherLocation | undefined
+    error: boolean
 };
 
-export const VideoSettings = ({ location }: IVideoSettingsProps) => {
+export const VideoSettings = ({ location, error }: IVideoSettingsProps) => {
     const [searchParams]: [URLSearchParams, SetURLSearchParams] = useSearchParams();
     const navigate = useNavigate();
 
@@ -119,7 +120,7 @@ export const VideoSettings = ({ location }: IVideoSettingsProps) => {
                     values={WeatherVariantList}
                     selectedOption={isRandomWeather(weatherVariant) ? WeatherVariantValue.Random : weatherVariant}
                     onChange={(changeEvent) => handleRadioOptionChange({ changeEvent, stateVariable: LocalStorageKey.WeatherVariant })}
-                    location={location}
+                    locationDisabled={error}
                 />
             </VideoSettingsGroup>
 
